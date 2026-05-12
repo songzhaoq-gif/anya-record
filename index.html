@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V15</title>
+  <title>安压记录 V17</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -528,6 +528,115 @@
     .detailRowNew{display:flex;align-items:flex-start;gap:8px;color:#1f2937;font-size:14px;min-height:24px}.detailRowNew .k{color:#64748b;min-width:42px;font-weight:700}.detailRowNew .v{font-weight:800;line-height:1.5;word-break:break-word;white-space:pre-wrap}
     .recordBtnsNew{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.recordBtnsNew button{border-radius:18px;padding:13px 14px;box-shadow:none;font-size:15px}.recordBtnsNew .editSoft{background:#eef4ff;color:#334155;border:1px solid #dbeafe}.recordBtnsNew .deleteSoft{background:#fff1f2;color:#ef4444;border:1px solid #fecdd3}
 
+
+    .realExportPage{display:grid;gap:14px}
+    .exportCleanCard{
+      background:rgba(255,255,255,.96);
+      border:1px solid rgba(255,255,255,.7);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .exportCleanHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+    .exportCleanTitle{
+      font-size:22px;
+      font-weight:950;
+      color:#172554;
+      margin:0;
+    }
+    .exportCleanSub{
+      margin-top:6px;
+      color:#64748b;
+      font-size:13px;
+      line-height:1.6;
+    }
+    .exportPrimary{
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      color:#fff;
+      border-radius:22px;
+      padding:16px 18px;
+      box-shadow:0 12px 24px rgba(37,99,235,.22);
+      font-size:16px;
+    }
+    .exportActionsGrid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    @media(min-width:780px){.exportActionsGrid{grid-template-columns:repeat(3,1fr)}}
+    .exportActionReal{
+      border:1px solid #dbeafe;
+      background:#fff;
+      color:#172554;
+      border-radius:22px;
+      padding:16px 14px;
+      box-shadow:none;
+      text-align:left;
+      display:block;
+      min-height:104px;
+    }
+    .exportActionReal:hover{background:#eff6ff}
+    .exportActionReal .ico{font-size:28px;display:block;margin-bottom:10px}
+    .exportActionReal b{display:block;font-size:16px;margin-bottom:6px}
+    .exportActionReal span{display:block;font-size:12px;color:#64748b;line-height:1.5}
+    .exportDangerArea{
+      margin-top:14px;
+      border-top:1px solid #e5e7eb;
+      padding-top:14px;
+    }
+    .exportHintBox{
+      border:1px solid #bfdbfe;
+      background:#f8fbff;
+      border-radius:22px;
+      padding:14px 16px;
+      color:#334155;
+      line-height:1.75;
+      font-size:14px;
+    }
+    .actualPrintReport{display:none}
+    .actualPrintTitle{text-align:center;font-size:21px;font-weight:950;margin:0 0 5px;color:#111827}
+    .actualPrintSub{text-align:center;font-size:11px;color:#6b7280;margin-bottom:10px}
+    .actualSummaryGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 12px}
+    .actualSummaryCard{border:1px solid #d1d5db;border-radius:10px;padding:7px;text-align:center;background:#f8fafc}
+    .actualSummaryCard span{display:block;color:#6b7280;font-size:10.5px}
+    .actualSummaryCard b{display:block;color:#111827;font-size:16px;margin-top:3px}
+    .actualReportTable{width:100%;border-collapse:collapse;font-size:9.4px;table-layout:fixed}
+    .actualReportTable th,.actualReportTable td{border:1px solid #d1d5db;padding:3px 4px;line-height:1.25;text-align:center;vertical-align:middle;word-break:break-word}
+    .actualReportTable th{background:#eff6ff;color:#1e3a8a;font-weight:900}
+    .actualReportTable td.left{text-align:left}
+    .actualChartBlock{text-align:center;margin:10px 0;break-inside:avoid}
+    .actualChartBlock img{max-width:100%;max-height:255px;border:1px solid #d1d5db;border-radius:10px}
+    .actualReportText{border:1px solid #d1d5db;background:#f8fafc;border-radius:10px;padding:8px;font-size:10.5px;line-height:1.55;white-space:pre-wrap}
+    .actualNote{font-size:10px;color:#6b7280;line-height:1.5;margin-top:6px}
+    @media print{
+      @page{size:A4 landscape;margin:8mm}
+      body{background:#fff!important}
+      body *{visibility:hidden!important}
+      #actualPrintReport,#actualPrintReport *{visibility:visible!important}
+      #actualPrintReport{
+        display:block!important;
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        padding:0;
+        margin:0;
+        color:#111827;
+        background:#fff;
+      }
+      .actualPrintTitle{font-size:20px}
+      .actualReportTable{font-size:9px}
+      .actualSummaryCard b{font-size:15px}
+    }
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff}
@@ -571,7 +680,7 @@
   <div class="safe-top"></div>
   <div class="app">
     <header>
-      <div class="brand"><div class="logo">压</div><div><h1>安压记录</h1><div class="sub">血压、心率、服药、症状记录</div></div></div>
+      <div class="brand"><div class="logo"><img src="internal-top-icon.png" alt="安压记录"></div><div><h1>安压记录</h1><div class="sub">血压、心率、服药、症状记录</div></div></div>
       <button id="installBtn" class="installBtn">安装到桌面</button>
     </header>
 
@@ -759,69 +868,61 @@
       </div>
     </section>
 
-        <section id="export" class="page">
-      <div class="heroCard">
-        <div class="heroLeft">
-          <div class="heroIcon">⬇️</div>
-          <div>
-            <div class="heroTitle">导出与分享</div>
-            <div class="heroDesc">安全导出，便捷分享您的血压数据</div>
-          </div>
-        </div>
-        <button class="ghostPill secondary" onclick="toast('建议优先使用医生版 PDF 或 JSON 备份')">🕒 导出记录</button>
-      </div>
-      <div class="exportStack">
-        <div class="exportSection">
-          <div class="exportHead"><div class="secNo">1</div><div><div class="exportTitle">医生就诊包</div><div class="exportDesc">为就诊沟通准备的专业资料包，包含 A4 对比表、趋势图、就诊摘要。</div></div><span class="tagHot">推荐</span></div>
-          <div class="doctorWrap">
+            <section id="export" class="page">
+      <div class="realExportPage">
+        <div class="exportCleanCard">
+          <div class="exportCleanHeader">
             <div>
-              <div class="toolGrid" style="margin-top:0;grid-template-columns:repeat(3,1fr)">
-                <div class="actionCard"><span class="actionIcon">📄</span><div class="actionTitle">A4 对比表</div><div class="actionSub">血压对比数据</div></div>
-                <div class="actionCard"><span class="actionIcon">📈</span><div class="actionTitle">趋势图</div><div class="actionSub">7 / 30 / 全部</div></div>
-                <div class="actionCard"><span class="actionIcon">📋</span><div class="actionTitle">就诊摘要</div><div class="actionSub">关键指标汇总</div></div>
-              </div>
-              <div class="ctaRow">
-                <button class="btnLarge" onclick="printDoctorPDF()">📄 生成医生版 PDF</button>
-                <button class="btnLarge btnOutline" onclick="previewDoctorPackage()">👁️ 预览</button>
-              </div>
+              <h2 class="exportCleanTitle">导出数据</h2>
+              <div class="exportCleanSub">这里导出的不是当前界面截图，而是血压数据、表格、趋势图和医生复查资料。</div>
             </div>
-            <div class="previewMini" id="doctorPreviewCard"></div>
+            <button class="exportPrimary" onclick="printDoctorPDF()">生成医生版 PDF</button>
+          </div>
+
+          <div class="exportActionsGrid">
+            <button class="exportActionReal" onclick="exportCSV()">
+              <span class="ico">📊</span>
+              <b>导出 CSV 表格</b>
+              <span>用于 Excel / WPS 打开，查看完整明细数据。</span>
+            </button>
+            <button class="exportActionReal" onclick="exportJSON()">
+              <span class="ico">☁️</span>
+              <b>导出 JSON 备份</b>
+              <span>用于换手机、重装后恢复全部记录。</span>
+            </button>
+            <label class="exportActionReal importLabel" style="display:block">
+              <span class="ico">📥</span>
+              <b>导入 JSON 备份</b>
+              <span>选择 App 导出的备份文件恢复数据。</span>
+              <input id="importFile" type="file" accept=".json,.txt,application/json,text/plain" onchange="importJSONBackup(event)">
+            </label>
+            <button class="exportActionReal" onclick="exportChartPNG()">
+              <span class="ico">📈</span>
+              <b>导出趋势图 PNG</b>
+              <span>单独保存血压 / 心率趋势图。</span>
+            </button>
+            <button class="exportActionReal" onclick="copyReport()">
+              <span class="ico">📝</span>
+              <b>复制就诊摘要</b>
+              <span>复制文字，可直接发给医生或家人。</span>
+            </button>
+          </div>
+
+          <div class="exportDangerArea">
+            <button class="danger" onclick="clearAll()">清空全部记录</button>
           </div>
         </div>
 
-        <div class="exportSection">
-          <div class="exportHead"><div class="secNo">2</div><div><div class="exportTitle">数据备份与恢复</div><div class="exportDesc">安全备份数据，换机不丢失。导入备份功能已保留。</div></div></div>
-          <div class="toolGrid">
-            <button class="actionCard secondary" onclick="exportCSV()"><span class="actionIcon">🟢</span><div class="actionTitle">导出 CSV</div><div class="actionSub">表格文件</div></button>
-            <button class="actionCard secondary" onclick="exportJSON()"><span class="actionIcon">☁️</span><div class="actionTitle">导出备份</div><div class="actionSub">JSON 备份</div></button>
-            <label class="actionCard importLabel" style="display:block;padding:18px 12px"><span class="actionIcon">📥</span><div class="actionTitle">导入备份</div><div class="actionSub">恢复数据</div><input id="importFile" type="file" accept=".json,.txt,application/json,text/plain" onchange="importJSONBackup(event)"></label>
-            <button class="actionCard secondary" onclick="copyReport()"><span class="actionIcon">📝</span><div class="actionTitle">复制就诊摘要</div><div class="actionSub">便于发送医生</div></button>
-          </div>
-          <div class="btnbar" style="margin-top:14px"><button class="danger" onclick="clearAll()">清空全部记录</button></div>
+        <div class="exportHintBox">
+          <b>说明：</b><br>
+          1. “医生版 PDF”只导出数据报告，不会导出这个 App 页面。<br>
+          2. JSON 是恢复数据用的备份文件；CSV 是表格文件，不能用于恢复。<br>
+          3. 换手机前，优先导出 JSON 备份。
         </div>
 
-        <div class="exportSection">
-          <div class="exportHead"><div class="secNo">3</div><div><div class="exportTitle">图像与分享</div><div class="exportDesc">将趋势图或医生版资料分享给家人、朋友或医生。</div></div></div>
-          <div class="toolGrid" style="grid-template-columns:repeat(3,1fr)">
-            <button class="actionCard secondary" onclick="exportChartPNG()"><span class="actionIcon">🖼️</span><div class="actionTitle">导出趋势图</div><div class="actionSub">PNG 高质量图</div></button>
-            <button class="actionCard secondary" onclick="shareDoctorSummary()"><span class="actionIcon">🔗</span><div class="actionTitle">分享摘要</div><div class="actionSub">发送到应用</div></button>
-            <button class="actionCard secondary" onclick="printDoctorPDF()"><span class="actionIcon">🖨️</span><div class="actionTitle">打印 / 分享</div><div class="actionSub">PDF 打印或分享</div></button>
-          </div>
-        </div>
-
-        <div class="noteCard">
-          <div class="noteTitle">ℹ️ 备份与换机说明</div>
-          <ul class="noteList">
-            <li>备份文件将保存到「文件 App / 下载项」，请妥善保管。</li>
-            <li>更换设备时，请使用「导入备份（JSON）」恢复全部数据。</li>
-            <li>重新添加桌面图标通常不影响数据；若清理浏览器网站数据，建议先导出备份。</li>
-          </ul>
-        </div>
-
-        <div style="display:none">
-          <div id="doctorReport" class="report"></div>
-          <div id="printReport" class="printOnly"></div>
-        </div>
+        <div id="doctorReport" style="display:none"></div>
+        <div id="printReport" style="display:none"></div>
+        <div id="actualPrintReport" class="actualPrintReport"></div>
       </div>
     </section>
   </div>
@@ -1050,27 +1151,51 @@ function getPrintSummaryCards(){
 }
 
 function renderPrintReport(){
-  const box=document.getElementById('printReport');
+  const box=document.getElementById('actualPrintReport') || document.getElementById('printReport');
   if(!box) return;
   const chart=document.getElementById('chart');
   const imgSrc = chart && records.length>=2 ? chart.toDataURL('image/png') : '';
   const rows = buildDoctorRows();
+  const source = recentDays(30).length ? recentDays(30) : records;
+  const abnormal = source.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;
   const today = new Date();
   box.innerHTML = `
-    <div class="printTitle">安压记录｜血压复查记录表</div>
-    <div class="printSub">生成时间：${fmtDate(today.toISOString())}　记录总数：${records.length} 条　A4横版打印</div>
-    ${getPrintSummaryCards()}
-    <h3>一、血压记录对比表</h3>
-    ${rows ? `<table class="doctorTable">
+    <div class="actualPrintTitle">安压记录｜血压复查数据报告</div>
+    <div class="actualPrintSub">生成时间：${fmtDate(today.toISOString())}　记录总数：${records.length} 条　导出范围：${recentDays(30).length?'近30天':'全部记录'}</div>
+
+    <div class="actualSummaryGrid">
+      <div class="actualSummaryCard"><span>记录次数</span><b>${source.length}</b></div>
+      <div class="actualSummaryCard"><span>平均血压</span><b>${avg(source,'sys')}/${avg(source,'dia')}</b></div>
+      <div class="actualSummaryCard"><span>平均心率</span><b>${avg(source,'hr')}</b></div>
+      <div class="actualSummaryCard"><span>需关注记录</span><b>${abnormal}</b></div>
+    </div>
+
+    <h3 style="font-size:14px;margin:8px 0 6px">一、血压记录对比表</h3>
+    ${rows ? `<table class="actualReportTable">
       <thead><tr>
-        <th>序号</th><th>日期时间</th><th>时段</th><th>高压</th><th>低压</th><th>心率</th><th>左右手</th><th>姿势</th><th>服药</th><th>药物/剂量</th><th>测前状态</th><th>症状</th><th>判断</th><th>备注</th>
+        <th style="width:30px">序号</th>
+        <th style="width:100px">日期时间</th>
+        <th style="width:44px">时段</th>
+        <th style="width:40px">高压</th>
+        <th style="width:40px">低压</th>
+        <th style="width:40px">心率</th>
+        <th style="width:48px">左右手</th>
+        <th style="width:44px">姿势</th>
+        <th style="width:42px">服药</th>
+        <th style="width:120px">药物/剂量</th>
+        <th style="width:62px">测前状态</th>
+        <th style="width:94px">症状</th>
+        <th style="width:54px">判断</th>
+        <th style="width:110px">备注</th>
       </tr></thead>
       <tbody>${rows}</tbody>
     </table>` : '<div class="empty">暂无记录</div>'}
-    ${imgSrc ? `<div class="printChartWrap"><h3>二、血压与心率趋势图</h3><img src="${imgSrc}" alt="趋势图"></div>` : ''}
-    <h3>三、就诊摘要</h3>
-    <div class="report" style="margin-bottom:6px">${tableSafe(getReport())}</div>
-    <div class="printNote">颜色说明：红色表示偏高或需关注；蓝色表示偏低；绿色表示相对稳定。本记录仅用于复查沟通，不替代医生诊断。</div>
+
+    ${imgSrc ? `<div class="actualChartBlock"><h3 style="font-size:14px;margin:8px 0 6px">二、血压与心率趋势图</h3><img src="${imgSrc}" alt="趋势图"></div>` : ''}
+
+    <h3 style="font-size:14px;margin:8px 0 6px">三、就诊摘要</h3>
+    <div class="actualReportText">${tableSafe(getReport())}</div>
+    <div class="actualNote">说明：本报告由个人记录自动生成，仅用于复查沟通，不替代医生诊断。红色表示偏高或需关注，蓝色表示偏低，绿色表示相对稳定。</div>
   `;
 }
 function exportChartPNG(){
@@ -1082,11 +1207,7 @@ function exportChartPNG(){
   a.download='安压记录_趋势图.png';
   document.body.appendChild(a);a.click();a.remove();
 }
-function printDoctorPDF(){
-  renderChart();
-  renderPrintReport();
-  setTimeout(()=>window.print(),100);
-}
+function printDoctorPDF(){renderChart();renderPrintReport();setTimeout(()=>window.print(),120)}
 
 function escapeCSV(v){v=String(v??'');return `"${v.replace(/"/g,'""')}"`}function exportCSV(){const headers=['日期时间','收缩压','舒张压','心率','测量时段','左右手','姿势','是否服药','药物','测量前状态','症状','备注','自动判断'];const rows=records.map(r=>[fmtDate(r.dt),r.sys,r.dia,r.hr,r.period,r.arm,r.position,r.tookMed,r.meds,r.state,r.symptoms,r.note,classify(r.sys,r.dia).text]);const csv='\ufeff'+[headers,...rows].map(row=>row.map(escapeCSV).join(',')).join('\n');downloadBlob(csv,'安压记录_血压数据.csv','text/csv;charset=utf-8')}
 
@@ -1165,7 +1286,7 @@ function importJSONBackup(event){
   reader.readAsText(file, 'utf-8');
 }
 
-function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V15',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V17',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
 async function copyReport(){try{await navigator.clipboard.writeText(getReport());toast('就诊摘要已复制')}catch(e){alert('复制失败，可手动选中文本复制')}}function clearAll(){if(confirm('确定清空全部记录吗？此操作不可恢复。')){localStorage.removeItem(KEY);records=[];renderAll();toast('已清空')}}
 fillNow();renderAll();
 </script>
