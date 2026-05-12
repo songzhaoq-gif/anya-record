@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V18</title>
+  <title>安压记录 V19</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -648,6 +648,29 @@
     .logo{overflow:hidden}
     .recordsBrandIcon{overflow:hidden}
 
+
+    .clickable{cursor:pointer;transition:transform .16s ease, box-shadow .16s ease}
+    .clickable:active{transform:scale(.985)}
+    .detailModalMask{position:fixed;inset:0;background:rgba(15,23,42,.42);z-index:1000;display:none;align-items:flex-end;justify-content:center;padding:14px}
+    .detailModalMask.show{display:flex}
+    .detailModal{width:min(760px,100%);max-height:86vh;overflow:auto;background:#fff;border-radius:28px;padding:18px;box-shadow:0 24px 70px rgba(15,23,42,.28)}
+    .detailModalHead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+    .detailModalTitle{font-size:20px;font-weight:950;color:#172554}
+    .closeBtn{width:42px;height:42px;border-radius:999px;background:#eef2f7;color:#334155;box-shadow:none;padding:0;display:grid;place-items:center;font-size:20px}
+    .detailHero{border-radius:24px;padding:16px;background:linear-gradient(135deg,#eff6ff,#ffffff);border:1px solid #dbeafe;margin-bottom:14px}
+    .detailBP{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .detailBP strong{font-size:40px;line-height:1;color:#0f172a}
+    .detailBP span{color:#64748b;font-weight:900;padding-bottom:4px}
+    .detailRows{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:640px){.detailRows{grid-template-columns:1fr}}
+    .detailCell{border:1px solid #e5e7eb;background:#f8fafc;border-radius:16px;padding:12px}
+    .detailCell .k{color:#64748b;font-size:12px;font-weight:800;margin-bottom:5px}
+    .detailCell .v{color:#111827;font-size:15px;font-weight:850;line-height:1.6;word-break:break-word;white-space:pre-wrap}
+    .detailActions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+    .filterActiveNote{display:none;margin-top:10px;padding:10px 12px;border-radius:16px;background:#eff6ff;color:#1e40af;font-size:13px;font-weight:800}
+    .filterActiveNote.show{display:block}
+    .rangeBtn,.metricCard,.statCardNew,.recordCardV13,.exportActionReal,.quickMetric{cursor:pointer}
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff!important}
@@ -700,6 +723,29 @@
     }
     .logo{overflow:hidden}
     .recordsBrandIcon{overflow:hidden}
+
+
+    .clickable{cursor:pointer;transition:transform .16s ease, box-shadow .16s ease}
+    .clickable:active{transform:scale(.985)}
+    .detailModalMask{position:fixed;inset:0;background:rgba(15,23,42,.42);z-index:1000;display:none;align-items:flex-end;justify-content:center;padding:14px}
+    .detailModalMask.show{display:flex}
+    .detailModal{width:min(760px,100%);max-height:86vh;overflow:auto;background:#fff;border-radius:28px;padding:18px;box-shadow:0 24px 70px rgba(15,23,42,.28)}
+    .detailModalHead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+    .detailModalTitle{font-size:20px;font-weight:950;color:#172554}
+    .closeBtn{width:42px;height:42px;border-radius:999px;background:#eef2f7;color:#334155;box-shadow:none;padding:0;display:grid;place-items:center;font-size:20px}
+    .detailHero{border-radius:24px;padding:16px;background:linear-gradient(135deg,#eff6ff,#ffffff);border:1px solid #dbeafe;margin-bottom:14px}
+    .detailBP{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+    .detailBP strong{font-size:40px;line-height:1;color:#0f172a}
+    .detailBP span{color:#64748b;font-weight:900;padding-bottom:4px}
+    .detailRows{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:640px){.detailRows{grid-template-columns:1fr}}
+    .detailCell{border:1px solid #e5e7eb;background:#f8fafc;border-radius:16px;padding:12px}
+    .detailCell .k{color:#64748b;font-size:12px;font-weight:800;margin-bottom:5px}
+    .detailCell .v{color:#111827;font-size:15px;font-weight:850;line-height:1.6;word-break:break-word;white-space:pre-wrap}
+    .detailActions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+    .filterActiveNote{display:none;margin-top:10px;padding:10px 12px;border-radius:16px;background:#eff6ff;color:#1e40af;font-size:13px;font-weight:800}
+    .filterActiveNote.show{display:block}
+    .rangeBtn,.metricCard,.statCardNew,.recordCardV13,.exportActionReal,.quickMetric{cursor:pointer}
 
     @media print{
       @page{size:A4 landscape;margin:8mm}
@@ -758,8 +804,8 @@
       <div class="homeBanner">
         <div class="bannerTop">
           <div>
-            <h2 class="bannerTitle">安压记录</h2>
-            <div class="bannerDesc">更舒适地记录血压、心率、服药与症状信息。新增拍照扫描录入，更适合日常监测与门诊复查。</div>
+            <h2 class="bannerTitle">今日血压管理</h2>
+            <div class="bannerDesc">记录血压、服药与症状，方便日常监测与门诊复查。</div>
             <div class="bannerTag">🩺 家庭血压监测 · 医生复查整理</div>
           </div>
           <div class="miniPill" style="background:rgba(255,255,255,.18);color:#fff">今日 <span id="todayCountTop">0 次</span></div>
@@ -773,10 +819,10 @@
       <div class="overviewCard" style="margin-bottom:14px">
         <div class="overviewHead"><div><h2>今日概览</h2><div class="overviewSub">快速查看最近状态与趋势</div></div><div class="miniPill">实时更新</div></div>
         <div class="quickMetrics">
-          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmBlue">📌</span>最近一次</div><div class="qmValue" id="lastBp">--/--</div><div class="qmHint"><span id="lastStatus">--</span>　·　心率 <span id="lastHr">--</span> 次/分</div></div>
-          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmGreen">7</span>近7天平均</div><div class="qmValue"><span id="avg7Sys">--</span>/<span id="avg7Dia">--</span></div><div class="qmHint">平均心率 <span id="avg7Hr">--</span> 次/分</div></div>
-          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmOrange">30</span>近30天平均</div><div class="qmValue"><span id="avg30Sys">--</span>/<span id="avg30Dia">--</span></div><div class="qmHint">平均心率 <span id="avg30Hr">--</span> 次/分</div></div>
-          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmPurple">!</span>重点关注</div><div class="qmValue" id="homeAbnormal">--</div><div class="qmHint">近30天异常/需关注记录</div></div>
+          <div class="quickMetric clickable" onclick="openLatestRecord()"><div class="qmTop"><span class="qmIcon qmBlue">📌</span>最近一次</div><div class="qmValue" id="lastBp">--/--</div><div class="qmHint"><span id="lastStatus">--</span>　·　心率 <span id="lastHr">--</span> 次/分</div></div>
+          <div class="quickMetric clickable" onclick="goAnalysisRange(7)"><div class="qmTop"><span class="qmIcon qmGreen">7</span>近7天平均</div><div class="qmValue"><span id="avg7Sys">--</span>/<span id="avg7Dia">--</span></div><div class="qmHint">平均心率 <span id="avg7Hr">--</span> 次/分</div></div>
+          <div class="quickMetric clickable" onclick="goAnalysisRange(30)"><div class="qmTop"><span class="qmIcon qmOrange">30</span>近30天平均</div><div class="qmValue"><span id="avg30Sys">--</span>/<span id="avg30Dia">--</span></div><div class="qmHint">平均心率 <span id="avg30Hr">--</span> 次/分</div></div>
+          <div class="quickMetric clickable" onclick="goRecordsFilter('high')"><div class="qmTop"><span class="qmIcon qmPurple">!</span>重点关注</div><div class="qmValue" id="homeAbnormal">--</div><div class="qmHint">近30天异常/需关注记录</div></div>
         </div>
       </div>
 
@@ -837,10 +883,12 @@
           </div>
         </div>
 
+        <div id="filterActiveNote" class="filterActiveNote"></div>
+
         <div class="statsCardsNew">
-          <div class="statCardNew"><div class="statCardHead"><span class="statCardIcon statBlue">📋</span>全部记录</div><div class="statCardNum"><span id="sumRecordTotal">0</span><span class="statCardUnit">条</span></div></div>
-          <div class="statCardNew"><div class="statCardHead"><span class="statCardIcon statOrange">⚠️</span>异常记录</div><div class="statCardNum"><span id="sumRecordAbn">0</span><span class="statCardUnit">条</span></div></div>
-          <div class="statCardNew"><div class="statCardHead"><span class="statCardIcon statGreen">🩺</span>有症状记录</div><div class="statCardNum"><span id="sumRecordSym">0</span><span class="statCardUnit">条</span></div></div>
+          <div class="statCardNew clickable" onclick="goRecordsFilter('all')"><div class="statCardHead"><span class="statCardIcon statBlue">📋</span>全部记录</div><div class="statCardNum"><span id="sumRecordTotal">0</span><span class="statCardUnit">条</span></div></div>
+          <div class="statCardNew clickable" onclick="goRecordsFilter('high')"><div class="statCardHead"><span class="statCardIcon statOrange">⚠️</span>异常记录</div><div class="statCardNum"><span id="sumRecordAbn">0</span><span class="statCardUnit">条</span></div></div>
+          <div class="statCardNew clickable" onclick="goRecordsFilter('symptoms')"><div class="statCardHead"><span class="statCardIcon statGreen">🩺</span>有症状记录</div><div class="statCardNum"><span id="sumRecordSym">0</span><span class="statCardUnit">条</span></div></div>
         </div>
 
         <div id="recordList" class="recordListModern"></div>
@@ -856,7 +904,7 @@
             <div class="heroDesc">解读血压趋势，洞察健康状态</div>
           </div>
         </div>
-        <button class="ghostPill secondary" onclick="toast('可通过 7天 / 30天 / 全部 切换分析范围')">📅 选择范围</button>
+        <button class="ghostPill secondary" onclick="openRangeHelp()">📅 选择范围</button>
       </div>
       <div class="rangeTabs">
         <button id="range7" class="rangeBtn active" onclick="setAnalysisRange(7,this)">7天</button>
@@ -865,14 +913,14 @@
       </div>
 
       <div class="metricGrid" style="margin-bottom:14px">
-        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-blue">✓</span>近7天平均血压</div><div class="metricMain" id="cardAvg7">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot">较上周期 <span id="trend7" class="down">--</span></div></div>
-        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-green">📅</span>近30天平均血压</div><div class="metricMain" id="cardAvg30">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot">较上周期 <span id="trend30" class="down">--</span></div></div>
-        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-orange">!</span>异常记录</div><div class="metricMain" id="cardAbnormal">-- <span class="metricUnit">次</span></div><div class="metricFoot">占比 <span id="abnormalRate">--</span></div></div>
-        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-purple">⏰</span>最近一次</div><div class="metricMain" id="cardLatest">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot" id="cardLatestSub">--</div></div>
+        <div class="metricCard clickable" onclick="goRecordsRange(7)"><div class="metricTop"><span class="miniIcon i-blue">✓</span>近7天平均血压</div><div class="metricMain" id="cardAvg7">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot">较上周期 <span id="trend7" class="down">--</span></div></div>
+        <div class="metricCard clickable" onclick="goRecordsRange(30)"><div class="metricTop"><span class="miniIcon i-green">📅</span>近30天平均血压</div><div class="metricMain" id="cardAvg30">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot">较上周期 <span id="trend30" class="down">--</span></div></div>
+        <div class="metricCard clickable" onclick="goRecordsFilter('high')"><div class="metricTop"><span class="miniIcon i-orange">!</span>异常记录</div><div class="metricMain" id="cardAbnormal">-- <span class="metricUnit">次</span></div><div class="metricFoot">占比 <span id="abnormalRate">--</span></div></div>
+        <div class="metricCard clickable" onclick="openLatestRecord()"><div class="metricTop"><span class="miniIcon i-purple">⏰</span>最近一次</div><div class="metricMain" id="cardLatest">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot" id="cardLatestSub">--</div></div>
       </div>
 
       <div class="analysisCard" style="margin-bottom:14px">
-        <div class="sectionHead"><div><div class="sectionTitle">血压与心率趋势</div></div><div class="miniSelect">按日</div></div>
+        <div class="sectionHead"><div><div class="sectionTitle">血压与心率趋势</div></div><div class="sectionSub">按日统计</div></div>
         <canvas id="analysisChart" class="analysisChart" width="800" height="360"></canvas>
       </div>
 
@@ -1002,6 +1050,17 @@
   </div>
 
   <nav class="tabs noPrint"><button class="tab active" onclick="showPage('home',this)">首页</button><button class="tab" onclick="showPage('records',this)">记录</button><button class="tab" onclick="showPage('analysis',this)">分析</button><button class="tab" onclick="showPage('export',this)">导出</button></nav>
+
+  <div id="recordDetailModal" class="detailModalMask" onclick="closeRecordDetail(event)">
+    <div class="detailModal" onclick="event.stopPropagation()">
+      <div class="detailModalHead">
+        <div class="detailModalTitle">记录详情</div>
+        <button class="closeBtn" onclick="hideRecordDetail()">×</button>
+      </div>
+      <div id="recordDetailContent"></div>
+    </div>
+  </div>
+
   <div id="toast" class="toast">已保存</div>
   <input id="scanFile" type="file" accept="image/*" capture="environment" style="display:none" onchange="scanBloodPressureImage(event)">
 
@@ -1113,37 +1172,86 @@ function renderStats(){
   const abn=r30.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;
   setText('homeAbnormal',abn || 0);
 }
-function recordHtml(r){const c=classify(r.sys,r.dia);const statusCls=c.text==='偏低'?'low':c.cls;const badgeCls=c.text==='偏低'?'low':c.cls;return `<div class="recordCardV13 ${statusCls}"><div class="recordV13Top"><div><div class="recordV13TitleRow"><div class="recordRoundIcon ${statusCls}">~</div><div class="recordBpMain"><strong>${r.sys}/${r.dia}</strong><span>mmHg</span></div></div></div><span class="statusBadgeNew ${badgeCls}">${c.text}</span></div><div class="metaGridNew"><div class="metaItemNew">📅 ${fmtDate(r.dt)}</div><div class="metaItemNew">${r.period==='晚上'||r.period==='睡前'?'🌙':'☀️'} ${r.period||'未记录'}</div><div class="metaItemNew">💪 ${r.arm||'未记录'}</div><div class="metaItemNew">🪑 ${r.position||'未记录'}</div><div class="metaItemNew">♡ 心率 ${r.hr||'--'} 次/分</div></div><div class="dividerThin"></div><div class="detailGridNew"><div class="detailRowNew"><span class="k">服药</span><span class="v">${r.tookMed||'未记录'}</span></div><div class="detailRowNew"><span class="k">状态</span><span class="v">${r.state||'未记录'}</span></div><div class="detailRowNew"><span class="k">症状</span><span class="v">${r.symptoms||'未记录'}</span></div><div class="detailRowNew"><span class="k">备注</span><span class="v">${r.note||'无'}</span></div></div><div class="recordBtnsNew"><button class="editSoft" onclick="editRecord('${r.id}')">✎ 编辑</button><button class="deleteSoft" onclick="deleteRecord('${r.id}')">🗑 删除</button></div></div>`}
+function recordHtml(r){
+  const c=classify(r.sys,r.dia);
+  const statusCls=c.text==='偏低'?'low':c.cls;
+  const badgeCls=c.text==='偏低'?'low':c.cls;
+  return `<div class="recordCardV13 ${statusCls} clickable" onclick="openRecordDetail('${r.id}')">
+    <div class="recordV13Top">
+      <div>
+        <div class="recordV13TitleRow">
+          <div class="recordRoundIcon ${statusCls}">~</div>
+          <div class="recordBpMain"><strong>${r.sys}/${r.dia}</strong><span>mmHg</span></div>
+        </div>
+      </div>
+      <span class="statusBadgeNew ${badgeCls}">${c.text}</span>
+    </div>
+    <div class="metaGridNew">
+      <div class="metaItemNew">📅 ${fmtDate(r.dt)}</div>
+      <div class="metaItemNew">${r.period==='晚上'||r.period==='睡前'?'🌙':'☀️'} ${r.period||'未记录'}</div>
+      <div class="metaItemNew">💪 ${r.arm||'未记录'}</div>
+      <div class="metaItemNew">🪑 ${r.position||'未记录'}</div>
+      <div class="metaItemNew">♡ 心率 ${r.hr||'--'} 次/分</div>
+    </div>
+    <div class="dividerThin"></div>
+    <div class="detailGridNew">
+      <div class="detailRowNew"><span class="k">服药</span><span class="v">${r.tookMed||'未记录'}</span></div>
+      <div class="detailRowNew"><span class="k">状态</span><span class="v">${r.state||'未记录'}</span></div>
+      <div class="detailRowNew"><span class="k">症状</span><span class="v">${r.symptoms||'未记录'}</span></div>
+      <div class="detailRowNew"><span class="k">备注</span><span class="v">${r.note||'无'}</span></div>
+    </div>
+    <div class="recordBtnsNew">
+      <button class="editSoft" onclick="event.stopPropagation();editRecord('${r.id}')">✎ 编辑</button>
+      <button class="deleteSoft" onclick="event.stopPropagation();deleteRecord('${r.id}')">🗑 删除</button>
+    </div>
+  </div>`
+}
 function renderRecords(){
   const q=(document.getElementById('filterText')?.value||'').trim().toLowerCase();
   const fp=(document.getElementById('filterPeriod')?.value||'');
   const fs=(document.getElementById('filterStatus')?.value||'');
   let list=records.filter(r=>JSON.stringify(r).toLowerCase().includes(q));
+  if(window.recordRangeDays){
+    const cut=new Date();cut.setDate(cut.getDate()-window.recordRangeDays);
+    list=list.filter(r=>new Date(r.dt)>=cut);
+  }
   if(fp)list=list.filter(r=>r.period===fp);
   if(fs){
     list=list.filter(r=>{
       const c=classify(r.sys,r.dia).text;
       if(fs==='stable')return c==='较稳定';
-      if(fs==='high')return c==='偏高'||c==='明显偏高';
+      if(fs==='high')return c==='偏高'||c==='明显偏高'||c==='偏低';
       if(fs==='low')return c==='偏低';
+      if(fs==='symptoms')return r.symptoms && !['无','无不适','未记录'].includes(String(r.symptoms).trim());
       return true;
     })
   }
   const abnormalTotal=list.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;
   const symptomTotal=list.filter(r=>r.symptoms && !['无','无不适','未记录'].includes(String(r.symptoms).trim())).length;
-  setText('totalCount',`${list.length} 条`);
   setText('sumRecordTotal',list.length);
   setText('sumRecordAbn',abnormalTotal);
   setText('sumRecordSym',symptomTotal);
+  const note=document.getElementById('filterActiveNote');
+  if(note){
+    const tags=[];
+    if(window.recordRangeDays)tags.push(`近${window.recordRangeDays}天`);
+    if(fp)tags.push(fp);
+    if(fs==='high')tags.push('异常记录');
+    if(fs==='symptoms')tags.push('有症状记录');
+    if(fs==='stable')tags.push('较稳定');
+    if(fs==='low')tags.push('偏低');
+    note.textContent=tags.length?`当前筛选：${tags.join(' / ')}，共 ${list.length} 条`:'';
+    note.classList.toggle('show',!!tags.length);
+  }
   const box=document.getElementById('recordList');
-  if(box)box.innerHTML=list.length?list.map(recordHtml).join(''):`<div class="empty">${q||fp||fs?'没有匹配结果，请调整筛选条件。':'暂无历史记录，先到首页新增一条记录吧。'}</div>`;
+  if(box)box.innerHTML=list.length?list.map(recordHtml).join(''):`<div class="empty">${q||fp||fs||window.recordRangeDays?'没有匹配结果，请调整筛选条件。':'暂无历史记录，先到首页新增一条记录吧。'}</div>`;
 }
 function toggleRecordFilters(){const p=document.getElementById('recordFilterPanel');if(p)p.classList.toggle('show')}
-function clearFilter(){const t=document.getElementById('filterText');if(t)t.value='';const p=document.getElementById('filterPeriod');if(p)p.value='';const s=document.getElementById('filterStatus');if(s)s.value='';renderAll()}
+function clearFilter(){window.recordRangeDays=0;const t=document.getElementById('filterText');if(t)t.value='';const p=document.getElementById('filterPeriod');if(p)p.value='';const s=document.getElementById('filterStatus');if(s)s.value='';renderAll()}
 function getChartSource(limit=30){return records.slice(0,limit).sort((a,b)=>new Date(a.dt)-new Date(b.dt))}
 function drawTrendChart(canvasId,data){const c=document.getElementById(canvasId);if(!c)return;const ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='#e5e7eb';for(let i=0;i<5;i++){const y=48+i*68;ctx.beginPath();ctx.moveTo(56,y);ctx.lineTo(c.width-24,y);ctx.stroke()}ctx.fillStyle='#6b7280';ctx.font='16px sans-serif';if(data.length<2){ctx.fillText('至少保存 2 条记录后显示趋势图',c.width/2-120,c.height/2);return}const syss=data.map(r=>Number(r.sys)).filter(Boolean),dias=data.map(r=>Number(r.dia)).filter(Boolean),hrs=data.map(r=>Number(r.hr)).filter(Boolean);const all=[...syss,...dias,...hrs];const min=Math.max(40,Math.min(...all)-10),max=Math.max(...all)+10;const left=70,right=c.width-40,top=46,bottom=c.height-46;function x(i){return left+i*((right-left)/(data.length-1||1))}function y(v){return bottom-(v-min)*((bottom-top)/(max-min||1))}const drawLine=(key,color,width)=>{ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();let started=false;data.forEach((r,i)=>{const v=Number(r[key]);if(!v)return; if(!started){ctx.moveTo(x(i),y(v));started=true}else{ctx.lineTo(x(i),y(v))}});ctx.stroke();data.forEach((r,i)=>{const v=Number(r[key]);if(!v)return;ctx.fillStyle=color;ctx.beginPath();ctx.arc(x(i),y(v),4.5,0,Math.PI*2);ctx.fill()})};drawLine('sys','#2563eb',3.5);drawLine('dia','#16a34a',3.5);drawLine('hr','#8b5cf6',2.6);ctx.fillStyle='#6b7280';ctx.font='14px sans-serif';data.forEach((r,i)=>{ctx.fillText(String(fmtDate(r.dt)).slice(5,10),x(i)-18,bottom+24)});ctx.fillText(String(Math.round(max)),18,top+4);ctx.fillText(String(Math.round(min)),18,bottom+4);ctx.fillStyle='#334155';ctx.font='15px sans-serif';ctx.fillText('蓝=收缩压',80,24);ctx.fillText('绿=舒张压',210,24);ctx.fillText('紫=心率',340,24)}
 function renderChart(){const source=getChartSource(30);drawTrendChart('chart',source);const analysisSource=getAnalysisSource();drawTrendChart('analysisChart',analysisSource)}
-function setAnalysisRange(days,btn){analysisRange=days;document.querySelectorAll('.rangeBtn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderAnalysis()}
+function setAnalysisRange(days,btn){analysisRange=days;document.querySelectorAll('.rangeBtn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderChart();renderAnalysis()}
 function getAnalysisSource(){if(!records.length)return[];if(analysisRange===0)return [...records].sort((a,b)=>new Date(a.dt)-new Date(b.dt));return recentDays(analysisRange).sort((a,b)=>new Date(a.dt)-new Date(b.dt))}
 function pct(part,total){return total?((part*100/total).toFixed(1)+'%'):'0%'}
 function compareAvgText(currentDays){const current=recentDays(currentDays);if(!current.length)return '--';const cut=new Date();cut.setDate(cut.getDate()-currentDays*2);const nowStart=new Date();nowStart.setDate(nowStart.getDate()-currentDays);const prev=records.filter(r=>{const d=new Date(r.dt);return d<nowStart && d>=cut});if(!prev.length)return '--';const ds=avg(current,'sys')-avg(prev,'sys');const dd=avg(current,'dia')-avg(prev,'dia');const arrow = (ds<=0 && dd<=0)?'↓':'↑';return `${arrow} ${Math.abs(ds)}/${Math.abs(dd)}`}
@@ -1170,6 +1278,80 @@ document.getElementById('bpForm').addEventListener('submit',e=>{e.preventDefault
 )
 function editRecord(id){const r=records.find(x=>x.id===id);if(!r)return;showPage('home',document.querySelector('.tab'));document.getElementById('bpForm').dataset.editing=id;for(const k of ['dt','sys','dia','hr','period','arm','position','tookMed','state','meds','symptoms','note'])document.getElementById(k).value=r[k]||'';window.scrollTo({top:0,behavior:'smooth'})}
 function deleteRecord(id){if(!confirm('确定删除这条记录吗？'))return;records=records.filter(r=>r.id!==id);save();renderAll();toast('已删除')}
+
+function goRecordsFilter(type){
+  showPage('records',document.querySelectorAll('.tab')[1]);
+  window.recordRangeDays=0;
+  setTimeout(()=>{
+    const s=document.getElementById('filterStatus');
+    const p=document.getElementById('filterPeriod');
+    const t=document.getElementById('filterText');
+    if(t)t.value='';
+    if(p)p.value='';
+    if(s){
+      if(type==='all')s.value='';
+      else if(type==='symptoms')s.value='symptoms';
+      else if(type==='high')s.value='high';
+      else s.value=type||'';
+    }
+    renderAll();
+  },0);
+}
+function goRecordsRange(days){
+  showPage('records',document.querySelectorAll('.tab')[1]);
+  window.recordRangeDays=days;
+  setTimeout(()=>{
+    const s=document.getElementById('filterStatus');
+    const p=document.getElementById('filterPeriod');
+    const t=document.getElementById('filterText');
+    if(t)t.value='';
+    if(p)p.value='';
+    if(s)s.value='';
+    renderAll();
+  },0);
+}
+function goAnalysisRange(days){
+  showPage('analysis',document.querySelectorAll('.tab')[2]);
+  setTimeout(()=>{
+    const btn=days===7?document.getElementById('range7'):days===30?document.getElementById('range30'):document.getElementById('rangeAll');
+    setAnalysisRange(days,btn);
+  },0);
+}
+function openLatestRecord(){
+  if(!records.length){toast('暂无记录');return}
+  openRecordDetail(records[0].id);
+}
+function openRecordDetail(id){
+  const r=records.find(x=>String(x.id)===String(id));
+  if(!r){toast('未找到记录');return}
+  const c=classify(r.sys,r.dia);
+  const box=document.getElementById('recordDetailContent');
+  if(!box)return;
+  box.innerHTML=`<div class="detailHero">
+    <div class="detailBP"><strong>${r.sys}/${r.dia}</strong><span>mmHg</span><span class="recordStatusPill ${c.cls}">${c.text}</span></div>
+    <div style="margin-top:10px;color:#64748b;font-weight:800">心率 ${r.hr||'--'} 次/分　｜　${fmtDate(r.dt)}</div>
+  </div>
+  <div class="detailRows">
+    <div class="detailCell"><div class="k">测量时段</div><div class="v">${r.period||'未记录'}</div></div>
+    <div class="detailCell"><div class="k">左右手</div><div class="v">${r.arm||'未记录'}</div></div>
+    <div class="detailCell"><div class="k">测量姿势</div><div class="v">${r.position||'未记录'}</div></div>
+    <div class="detailCell"><div class="k">测量前状态</div><div class="v">${r.state||'未记录'}</div></div>
+    <div class="detailCell"><div class="k">是否服药</div><div class="v">${r.tookMed||'未记录'}</div></div>
+    <div class="detailCell"><div class="k">药物名称 / 剂量</div><div class="v">${r.meds||'未记录'}</div></div>
+    <div class="detailCell"><div class="k">症状</div><div class="v">${r.symptoms||'未记录'}</div></div>
+    <div class="detailCell"><div class="k">备注</div><div class="v">${r.note||'无'}</div></div>
+    <div class="detailCell"><div class="k">自动判断</div><div class="v">${c.text}</div></div>
+  </div>
+  <div class="detailActions">
+    <button class="secondary" onclick="hideRecordDetail();editRecord('${r.id}')">编辑</button>
+    <button class="danger" onclick="hideRecordDetail();deleteRecord('${r.id}')">删除</button>
+  </div>`;
+  document.getElementById('recordDetailModal').classList.add('show');
+}
+function hideRecordDetail(){const m=document.getElementById('recordDetailModal');if(m)m.classList.remove('show')}
+function closeRecordDetail(event){if(event.target && event.target.id==='recordDetailModal')hideRecordDetail()}
+function openRangeHelp(){toast('请使用 7天 / 30天 / 全部切换分析范围')}
+
 function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));if(btn)btn.classList.add('active');renderAll()}
 
 function tableSafe(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -1360,7 +1542,7 @@ function importJSONBackup(event){
   reader.readAsText(file, 'utf-8');
 }
 
-function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V18',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V19',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
 async function copyReport(){try{await navigator.clipboard.writeText(getReport());toast('就诊摘要已复制')}catch(e){alert('复制失败，可手动选中文本复制')}}function clearAll(){if(confirm('确定清空全部记录吗？此操作不可恢复。')){localStorage.removeItem(KEY);records=[];renderAll();toast('已清空')}}
 fillNow();renderAll();
 </script>
