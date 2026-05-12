@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V20</title>
+  <title>安压记录 V22</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -757,6 +757,99 @@
       font-weight:900;
     }
 
+
+    .scanChoiceRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .scanChoiceRow button{
+      padding:10px 12px;
+      border-radius:14px;
+      box-shadow:none;
+      font-size:13px;
+    }
+    .scanWarnBox{
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      color:#9a3412;
+      border-radius:14px;
+      padding:10px 12px;
+      line-height:1.6;
+      margin-top:8px;
+      font-size:13px;
+      white-space:pre-wrap;
+    }
+    .scanOkBox{
+      background:#f0fdf4;
+      border:1px solid #bbf7d0;
+      color:#166534;
+      border-radius:14px;
+      padding:10px 12px;
+      line-height:1.6;
+      margin-top:8px;
+      font-size:13px;
+      white-space:pre-wrap;
+    }
+
+
+    .scanPreviewWrap{
+      margin-top:10px;
+      display:none;
+      border:1px solid #dbeafe;
+      background:#f8fbff;
+      border-radius:18px;
+      padding:10px;
+    }
+    .scanPreviewWrap.show{display:block}
+    .scanPreviewWrap canvas{
+      width:100%;
+      max-height:260px;
+      object-fit:contain;
+      border-radius:14px;
+      background:#111827;
+      display:block;
+    }
+    .scanModeTag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      border-radius:999px;
+      background:#e0f2fe;
+      color:#0369a1;
+      padding:6px 10px;
+      font-size:12px;
+      font-weight:900;
+      margin-top:8px;
+    }
+    .scanDigitGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-top:10px;
+    }
+    .scanDigitBox{
+      border:1px solid #d1d5db;
+      background:#fff;
+      border-radius:14px;
+      padding:10px;
+      text-align:center;
+    }
+    .scanDigitBox span{
+      display:block;
+      color:#64748b;
+      font-size:12px;
+      font-weight:800;
+    }
+    .scanDigitBox b{
+      display:block;
+      color:#172554;
+      font-size:24px;
+      line-height:1.2;
+      margin-top:3px;
+    }
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff!important}
@@ -919,6 +1012,99 @@
       font-weight:900;
     }
 
+
+    .scanChoiceRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .scanChoiceRow button{
+      padding:10px 12px;
+      border-radius:14px;
+      box-shadow:none;
+      font-size:13px;
+    }
+    .scanWarnBox{
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      color:#9a3412;
+      border-radius:14px;
+      padding:10px 12px;
+      line-height:1.6;
+      margin-top:8px;
+      font-size:13px;
+      white-space:pre-wrap;
+    }
+    .scanOkBox{
+      background:#f0fdf4;
+      border:1px solid #bbf7d0;
+      color:#166534;
+      border-radius:14px;
+      padding:10px 12px;
+      line-height:1.6;
+      margin-top:8px;
+      font-size:13px;
+      white-space:pre-wrap;
+    }
+
+
+    .scanPreviewWrap{
+      margin-top:10px;
+      display:none;
+      border:1px solid #dbeafe;
+      background:#f8fbff;
+      border-radius:18px;
+      padding:10px;
+    }
+    .scanPreviewWrap.show{display:block}
+    .scanPreviewWrap canvas{
+      width:100%;
+      max-height:260px;
+      object-fit:contain;
+      border-radius:14px;
+      background:#111827;
+      display:block;
+    }
+    .scanModeTag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      border-radius:999px;
+      background:#e0f2fe;
+      color:#0369a1;
+      padding:6px 10px;
+      font-size:12px;
+      font-weight:900;
+      margin-top:8px;
+    }
+    .scanDigitGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-top:10px;
+    }
+    .scanDigitBox{
+      border:1px solid #d1d5db;
+      background:#fff;
+      border-radius:14px;
+      padding:10px;
+      text-align:center;
+    }
+    .scanDigitBox span{
+      display:block;
+      color:#64748b;
+      font-size:12px;
+      font-weight:800;
+    }
+    .scanDigitBox b{
+      display:block;
+      color:#172554;
+      font-size:24px;
+      line-height:1.2;
+      margin-top:3px;
+    }
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff}
@@ -1015,7 +1201,7 @@
             <div class="wide inputGroup"><label>备注</label><textarea id="note" placeholder="如：昨晚睡眠、饮食、复查前说明等"></textarea></div>
           </div>
           <div class="btnbar"><button type="submit">保存记录</button><button type="button" class="scanBtn" onclick="document.getElementById('scanFile').click()">拍照扫描录入</button><button type="button" class="secondary" onclick="fillNow()">当前时间</button><button type="button" class="secondary" onclick="quickMedication()">常用药</button></div>
-          <div class="scanTip">拍照建议：让血压计屏幕尽量占满画面，避免反光，拍清楚高压、低压、心率。识别后请确认数字再保存。</div><div id="scanResult" class="scanResult"></div></form>
+          <div class="scanTip">拍照建议：让血压计屏幕尽量占满画面，避免反光，拍清楚高压、低压、心率。识别后请确认数字再保存。</div><div id="scanResult" class="scanResult"></div><div id="scanPreviewWrap" class="scanPreviewWrap"><canvas id="scanPreviewCanvas"></canvas><div class="scanModeTag">欧姆龙 LCD 专用识别模式</div></div></form>
         </div>
         <div class="chartCardHome"><div class="sectionHeader"><div><h2>近期趋势</h2><p>最近 30 条血压 / 心率变化</p></div><div class="miniPill">自动更新</div></div><canvas id="chart" width="800" height="360"></canvas>
           <div class="notice" style="margin-top:14px">提醒：本工具用于日常记录和复查整理，不替代医生诊断。若多次明显偏高、明显偏低，或伴随胸痛、明显气短、肢体无力等情况，应及时就医。</div></div>
@@ -1229,72 +1415,248 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPro
 document.getElementById('installBtn').addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').style.display='none'}else{toast('iPhone请点Safari分享按钮，再选添加到主屏幕')}});
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
 
-function extractBpNumbers(text){
-  const clean = String(text || '')
-    .replace(/[Oo]/g,'0')
+
+
+async function fileToImage(file){
+  return new Promise((resolve,reject)=>{
+    const img=new Image();
+    img.onload=()=>resolve(img);
+    img.onerror=reject;
+    img.src=URL.createObjectURL(file);
+  });
+}
+function makeBaseCanvas(img,maxW=1400){
+  const scale=Math.min(1,maxW/img.width);
+  const w=Math.round(img.width*scale), h=Math.round(img.height*scale);
+  const canvas=document.createElement('canvas');
+  canvas.width=w; canvas.height=h;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});
+  ctx.drawImage(img,0,0,w,h);
+  return canvas;
+}
+function cropCanvas(src,x,y,w,h){
+  const c=document.createElement('canvas');
+  c.width=Math.max(1,Math.round(w));
+  c.height=Math.max(1,Math.round(h));
+  const ctx=c.getContext('2d',{willReadFrequently:true});
+  ctx.drawImage(src,Math.round(x),Math.round(y),Math.round(w),Math.round(h),0,0,c.width,c.height);
+  return c;
+}
+function preprocessLCD(src,mode='hard'){
+  const scale=2.2;
+  const c=document.createElement('canvas');
+  c.width=Math.round(src.width*scale);
+  c.height=Math.round(src.height*scale);
+  const ctx=c.getContext('2d',{willReadFrequently:true});
+  ctx.imageSmoothingEnabled=false;
+  ctx.drawImage(src,0,0,c.width,c.height);
+  const img=ctx.getImageData(0,0,c.width,c.height);
+  const d=img.data;
+  for(let i=0;i<d.length;i+=4){
+    let g=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2];
+    // LCD digits are dark. Increase contrast.
+    if(mode==='soft'){
+      g=(g-118)*2.2+128;
+      g=Math.max(0,Math.min(255,g));
+    }else if(mode==='hard'){
+      g=g<145?0:255;
+    }else if(mode==='invert'){
+      g=g<150?255:0;
+    }else if(mode==='lcd'){
+      // Preserve dark digits, suppress gray screen background
+      g=g<165?0:255;
+    }
+    d[i]=d[i+1]=d[i+2]=g;
+  }
+  ctx.putImageData(img,0,0);
+  return c;
+}
+function detectLikelyScreenROI(canvas){
+  const w=canvas.width,h=canvas.height;
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});
+  const data=ctx.getImageData(0,0,w,h).data;
+  const darkCols=new Array(w).fill(0);
+  const darkRows=new Array(h).fill(0);
+  for(let y=0;y<h;y+=2){
+    for(let x=0;x<w;x+=2){
+      const i=(y*w+x)*4;
+      const g=0.299*data[i]+0.587*data[i+1]+0.114*data[i+2];
+      if(g<105){
+        darkCols[x]+=1;
+        darkRows[y]+=1;
+      }
+    }
+  }
+  // For Omron photos, the LCD screen usually occupies the middle-left large area.
+  // Use a stable heuristic first; edge detection fallback is intentionally conservative.
+  let rx=w*0.03, ry=h*0.17, rw=w*0.82, rh=h*0.62;
+  // If image is very close-up landscape/portrait, include slightly more screen
+  if(h>w*1.05){ rx=w*0.02; ry=h*0.18; rw=w*0.86; rh=h*0.60; }
+  return {x:rx,y:ry,w:rw,h:rh};
+}
+function drawScanPreview(base,roi,regions){
+  const wrap=document.getElementById('scanPreviewWrap');
+  const canvas=document.getElementById('scanPreviewCanvas');
+  if(!wrap||!canvas)return;
+  wrap.classList.add('show');
+  const maxW=900;
+  const scale=Math.min(1,maxW/base.width);
+  canvas.width=Math.round(base.width*scale);
+  canvas.height=Math.round(base.height*scale);
+  const ctx=canvas.getContext('2d');
+  ctx.drawImage(base,0,0,canvas.width,canvas.height);
+  ctx.strokeStyle='#22c55e';
+  ctx.lineWidth=4;
+  ctx.strokeRect(roi.x*scale,roi.y*scale,roi.w*scale,roi.h*scale);
+  ctx.lineWidth=2;
+  ctx.strokeStyle='#60a5fa';
+  regions.forEach(r=>ctx.strokeRect(r.x*scale,r.y*scale,r.w*scale,r.h*scale));
+}
+function numbersFromText(t){
+  const clean=String(t||'')
+    .replace(/[OoQ]/g,'0')
     .replace(/[Il|]/g,'1')
     .replace(/[Ss]/g,'5')
-    .replace(/[B]/g,'8');
-  const nums = (clean.match(/\d{2,3}/g) || [])
-    .map(n=>Number(n))
-    .filter(n=>n>=40 && n<=260);
-  let sys='', dia='', hr='';
-  for(let i=0;i<nums.length;i++){
-    const a=nums[i], b=nums[i+1], c=nums[i+2];
-    if(a>=80 && a<=220 && b>=40 && b<=140 && a>b){
-      sys=a; dia=b;
-      if(c>=40 && c<=160) hr=c;
-      break;
-    }
+    .replace(/[B]/g,'8')
+    .replace(/[Zz]/g,'2')
+    .replace(/[^\d]/g,' ');
+  return (clean.match(/\d{2,3}/g)||[]).map(Number);
+}
+function chooseNumber(nums,type){
+  nums=nums.filter(n=>Number.isFinite(n));
+  if(type==='sys'){
+    let arr=nums.filter(n=>n>=80&&n<=220);
+    // Prefer normal adult systolic range and 3-digit if available
+    arr.sort((a,b)=>{
+      const sa=(a>=100&&a<=160?30:0)+(String(a).length===3?10:0)-Math.abs(a-120)/10;
+      const sb=(b>=100&&b<=160?30:0)+(String(b).length===3?10:0)-Math.abs(b-120)/10;
+      return sb-sa;
+    });
+    return arr[0]||'';
   }
-  if(!sys && nums.length>=2){
-    const sorted = nums.slice(0,5);
-    for(let i=0;i<sorted.length-1;i++){
-      if(sorted[i] > sorted[i+1]){
-        sys=sorted[i]; dia=sorted[i+1];
-        const h=sorted[i+2];
-        if(h>=40 && h<=160) hr=h;
-        break;
-      }
-    }
+  if(type==='dia'){
+    let arr=nums.filter(n=>n>=45&&n<=120);
+    arr.sort((a,b)=>{
+      const sa=(a>=55&&a<=90?30:0)-Math.abs(a-75)/10;
+      const sb=(b>=55&&b<=90?30:0)-Math.abs(b-75)/10;
+      return sb-sa;
+    });
+    return arr[0]||'';
   }
-  return {sys,dia,hr,nums,raw:clean};
+  if(type==='hr'){
+    let arr=nums.filter(n=>n>=45&&n<=140);
+    arr.sort((a,b)=>{
+      const sa=(a>=55&&a<=100?30:0)-Math.abs(a-75)/10;
+      const sb=(b>=55&&b<=100?30:0)-Math.abs(b-75)/10;
+      return sb-sa;
+    });
+    return arr[0]||'';
+  }
+  return nums[0]||'';
+}
+async function ocrOneRegion(regionCanvas,label){
+  const variants=[
+    preprocessLCD(regionCanvas,'lcd'),
+    preprocessLCD(regionCanvas,'hard'),
+    preprocessLCD(regionCanvas,'soft'),
+    preprocessLCD(regionCanvas,'invert')
+  ];
+  let allNums=[];
+  let rawTexts=[];
+  for(const v of variants){
+    const res=await Tesseract.recognize(v,'eng',{
+      tessedit_char_whitelist:'0123456789',
+      tessedit_pageseg_mode:'7'
+    });
+    const text=res&&res.data?res.data.text:'';
+    rawTexts.push(text);
+    allNums.push(...numbersFromText(text));
+  }
+  const value=chooseNumber(allNums,label);
+  return {label,value,nums:allNums,raw:rawTexts.join(' ')};
+}
+function omronRegions(base,roi){
+  // In Omron LCD screens: SYS top, DIA middle, PULSE lower.
+  // Focus on left/center large digits and avoid small labels on right.
+  const x=roi.x+roi.w*0.10;
+  const w=roi.w*0.55;
+  const sys={x:x,y:roi.y+roi.h*0.08,w:w,h:roi.h*0.30,label:'sys'};
+  const dia={x:x,y:roi.y+roi.h*0.34,w:w,h:roi.h*0.28,label:'dia'};
+  const hr ={x:x,y:roi.y+roi.h*0.58,w:w,h:roi.h*0.28,label:'hr'};
+  return [sys,dia,hr];
+}
+function confidenceCheck(sys,dia,hr){
+  let score=100;
+  if(!sys||!dia)score-=70;
+  if(sys&&dia&&sys<=dia)score-=60;
+  if(sys<90||sys>220)score-=40;
+  if(dia<45||dia>130)score-=35;
+  if(hr&&(hr<45||hr>150))score-=35;
+  if(sys&&dia&&(sys-dia<25||sys-dia>100))score-=18;
+  if(sys&&sys<100)score-=15;
+  if(dia&&dia<55)score-=12;
+  return Math.max(0,score);
+}
+function fillScannedValues(sys,dia,hr){
+  document.getElementById('sys').value=sys;
+  document.getElementById('dia').value=dia;
+  if(hr)document.getElementById('hr').value=hr;
+  fillNow();
+  toast('扫描结果已填入，请核对后保存');
+}
+function showOmronScanResult(sys,dia,hr,score,debugNums){
+  const box=document.getElementById('scanResult');
+  if(!box)return;
+  box.style.display='block';
+  const detail=`<div class="scanDigitGrid">
+    <div class="scanDigitBox"><span>高压</span><b>${sys||'--'}</b></div>
+    <div class="scanDigitBox"><span>低压</span><b>${dia||'--'}</b></div>
+    <div class="scanDigitBox"><span>心率</span><b>${hr||'--'}</b></div>
+  </div>`;
+  if(score>=75&&sys&&dia){
+    fillScannedValues(sys,dia,hr);
+    box.innerHTML=`<div class="scanOkBox">欧姆龙 LCD 专用识别完成，已自动填入。\n请再对照血压计屏幕核对一次，确认无误后保存。</div>${detail}`;
+  }else if(sys&&dia){
+    box.innerHTML=`<div class="scanWarnBox">识别结果需要你确认，暂不自动填入。\n可信度：${score}/100\n\n请对照血压计屏幕，如果正确，再点“确认填入”。</div>${detail}
+    <div class="scanChoiceRow">
+      <button type="button" onclick="fillScannedValues(${sys},${dia},${hr?hr:\"''\"})">确认填入</button>
+      <button type="button" class="secondary" onclick="document.getElementById('scanFile').click()">重新拍照</button>
+    </div>`;
+  }else{
+    box.innerHTML=`<div class="scanWarnBox">没有稳定识别到完整血压值。\n识别到的候选数字：${debugNums.join('、')||'无'}\n\n建议重新拍：让屏幕占满画面、正对屏幕、避开反光。</div>
+    <div class="scanChoiceRow"><button type="button" class="secondary" onclick="document.getElementById('scanFile').click()">重新拍照</button></div>`;
+  }
 }
 async function scanBloodPressureImage(event){
-  const input = event.target;
-  const file = input.files && input.files[0];
-  if(!file) return;
-  const resultBox = document.getElementById('scanResult');
-  resultBox.style.display = 'block';
-  resultBox.textContent = '正在识别图片，请稍等……';
+  const input=event.target;
+  const file=input.files&&input.files[0];
+  if(!file)return;
+  const resultBox=document.getElementById('scanResult');
+  resultBox.style.display='block';
+  resultBox.textContent='正在使用欧姆龙 LCD 专用模式识别……';
   try{
     if(!window.Tesseract){
-      resultBox.textContent = '识别组件加载失败。请检查网络后重试。';
+      resultBox.textContent='识别组件加载失败。请检查网络后重试。';
       return;
     }
-    const workerResult = await Tesseract.recognize(file, 'eng', {
-      logger: m => {
-        if(m.status === 'recognizing text'){
-          resultBox.textContent = `正在识别图片：${Math.round((m.progress||0)*100)}%`;
-        }
-      }
-    });
-    const text = workerResult && workerResult.data ? workerResult.data.text : '';
-    const found = extractBpNumbers(text);
-    if(found.sys && found.dia){
-      document.getElementById('sys').value = found.sys;
-      document.getElementById('dia').value = found.dia;
-      if(found.hr) document.getElementById('hr').value = found.hr;
-      fillNow();
-      resultBox.textContent = `识别完成：\n高压：${found.sys}\n低压：${found.dia}\n心率：${found.hr || '未识别'}\n\n请核对数字，确认无误后点“保存记录”。`;
-      toast('扫描已填入');
-    }else{
-      resultBox.textContent = `没有稳定识别到血压数字。\n\n识别到的数字：${found.nums.join('、') || '无'}\n\n建议重新拍照：屏幕放大、减少反光、保持清晰。`;
-    }
+    const img=await fileToImage(file);
+    const base=makeBaseCanvas(img,1400);
+    const roi=detectLikelyScreenROI(base);
+    const regs=omronRegions(base,roi);
+    drawScanPreview(base,roi,regs);
+    const crops=regs.map(r=>cropCanvas(base,r.x,r.y,r.w,r.h));
+    resultBox.textContent='正在分别识别高压、低压、心率……';
+    const sysRes=await ocrOneRegion(crops[0],'sys');
+    const diaRes=await ocrOneRegion(crops[1],'dia');
+    const hrRes =await ocrOneRegion(crops[2],'hr');
+    const sys=sysRes.value, dia=diaRes.value, hr=hrRes.value;
+    const score=confidenceCheck(sys,dia,hr);
+    const allNums=[...sysRes.nums,...diaRes.nums,...hrRes.nums];
+    showOmronScanResult(sys,dia,hr,score,allNums);
   }catch(e){
-    resultBox.textContent = '识别失败。可以重新拍照，或先手动输入。';
+    resultBox.innerHTML='<div class="scanWarnBox">识别失败。请重新拍照，或先手动输入。</div>';
   }finally{
-    input.value = '';
+    input.value='';
   }
 }
 
@@ -1697,7 +2059,7 @@ function importJSONBackup(event){
   reader.readAsText(file, 'utf-8');
 }
 
-function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V20',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V22',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
 async function copyReport(){try{await navigator.clipboard.writeText(getReport());toast('就诊摘要已复制')}catch(e){alert('复制失败，可手动选中文本复制')}}function clearAll(){if(confirm('确定清空全部记录吗？此操作不可恢复。')){localStorage.removeItem(KEY);records=[];renderAll();toast('已清空')}}
 fillNow();renderAll();
 </script>
