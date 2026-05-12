@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V17</title>
+  <title>安压记录 V18</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -489,7 +489,7 @@
     .recordsHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
     .recordsBrand{display:flex;align-items:center;gap:12px}
     .recordsBrandIcon{width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,#2563eb,#60a5fa);display:grid;place-items:center;box-shadow:0 14px 24px rgba(37,99,235,.22)}
-    .recordsBrandIcon img{width:36px;height:36px;object-fit:contain}
+    .recordsBrandIcon img{width:36px;height:36px;object-fit:contain;max-width:36px!important;max-height:36px!important}
     .recordsBrandTitle{font-size:18px;font-weight:950;color:#172554;line-height:1.1;margin:0}
     .recordsBrandSub{margin-top:6px;font-size:12px;color:#64748b}
     .recordsActionIcon{width:48px;height:48px;border-radius:16px;background:rgba(255,255,255,.9);border:1px solid #e5e7eb;box-shadow:0 8px 20px rgba(15,23,42,.06);display:grid;place-items:center;color:#2563eb;font-size:22px}
@@ -616,6 +616,38 @@
     .actualChartBlock img{max-width:100%;max-height:255px;border:1px solid #d1d5db;border-radius:10px}
     .actualReportText{border:1px solid #d1d5db;background:#f8fafc;border-radius:10px;padding:8px;font-size:10.5px;line-height:1.55;white-space:pre-wrap}
     .actualNote{font-size:10px;color:#6b7280;line-height:1.5;margin-top:6px}
+
+    .internalLogoSafe{
+      width:100%;
+      height:100%;
+      border-radius:inherit;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#2563eb,#60a5fa);
+      overflow:hidden;
+      position:relative;
+    }
+    .internalLogoSafe::after{
+      content:'';
+      position:absolute;
+      width:82%;
+      height:82%;
+      border-radius:30%;
+      background:rgba(255,255,255,.08);
+      right:-28%;
+      top:-22%;
+      transform:rotate(18deg);
+    }
+    .internalLogoSafe svg{
+      width:76%;
+      height:76%;
+      display:block;
+      position:relative;
+      z-index:1;
+    }
+    .logo{overflow:hidden}
+    .recordsBrandIcon{overflow:hidden}
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff!important}
@@ -636,6 +668,38 @@
       .actualReportTable{font-size:9px}
       .actualSummaryCard b{font-size:15px}
     }
+
+
+    .internalLogoSafe{
+      width:100%;
+      height:100%;
+      border-radius:inherit;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,#2563eb,#60a5fa);
+      overflow:hidden;
+      position:relative;
+    }
+    .internalLogoSafe::after{
+      content:'';
+      position:absolute;
+      width:82%;
+      height:82%;
+      border-radius:30%;
+      background:rgba(255,255,255,.08);
+      right:-28%;
+      top:-22%;
+      transform:rotate(18deg);
+    }
+    .internalLogoSafe svg{
+      width:76%;
+      height:76%;
+      display:block;
+      position:relative;
+      z-index:1;
+    }
+    .logo{overflow:hidden}
+    .recordsBrandIcon{overflow:hidden}
 
     @media print{
       @page{size:A4 landscape;margin:8mm}
@@ -680,7 +744,13 @@
   <div class="safe-top"></div>
   <div class="app">
     <header>
-      <div class="brand"><div class="logo"><img src="internal-top-icon.png" alt="安压记录"></div><div><h1>安压记录</h1><div class="sub">血压、心率、服药、症状记录</div></div></div>
+      <div class="brand"><div class="logo"><div class="internalLogoSafe" aria-label="安压记录图标">
+  <svg viewBox="0 0 100 100" role="img">
+    <path d="M50 10 C66 20 78 22 84 23 C83 53 72 75 50 88 C28 75 17 53 16 23 C22 22 34 20 50 10Z" fill="white" opacity="0.96"/>
+    <path d="M50 16 C63 24 73 26 78 27 C76 52 67 69 50 80 C33 69 24 52 22 27 C27 26 37 24 50 16Z" fill="#dbeafe"/>
+    <path d="M22 53 H35 L42 40 L52 68 L61 47 L68 53 H79" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div></div><div><h1>安压记录</h1><div class="sub">血压、心率、服药、症状记录</div></div></div>
       <button id="installBtn" class="installBtn">安装到桌面</button>
     </header>
 
@@ -738,9 +808,13 @@
       <div class="recordsPageShell">
         <div class="recordsHeader">
           <div class="recordsBrand">
-            <div class="recordsBrandIcon"><img src="internal-top-icon.png" alt="安压记录"></div>
-            <div>
-              <h2 class="recordsBrandTitle">安压记录</h2>
+            <div class="recordsBrandIcon"><div class="internalLogoSafe" aria-label="安压记录图标">
+  <svg viewBox="0 0 100 100" role="img">
+    <path d="M50 10 C66 20 78 22 84 23 C83 53 72 75 50 88 C28 75 17 53 16 23 C22 22 34 20 50 10Z" fill="white" opacity="0.96"/>
+    <path d="M50 16 C63 24 73 26 78 27 C76 52 67 69 50 80 C33 69 24 52 22 27 C27 26 37 24 50 16Z" fill="#dbeafe"/>
+    <path d="M22 53 H35 L42 40 L52 68 L61 47 L68 53 H79" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div></div><div><h2 class="recordsBrandTitle">安压记录</h2>
               <div class="recordsBrandSub">血压记录</div>
             </div>
           </div>
@@ -1286,7 +1360,7 @@ function importJSONBackup(event){
   reader.readAsText(file, 'utf-8');
 }
 
-function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V17',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V18',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
 async function copyReport(){try{await navigator.clipboard.writeText(getReport());toast('就诊摘要已复制')}catch(e){alert('复制失败，可手动选中文本复制')}}function clearAll(){if(confirm('确定清空全部记录吗？此操作不可恢复。')){localStorage.removeItem(KEY);records=[];renderAll();toast('已清空')}}
 fillNow();renderAll();
 </script>
