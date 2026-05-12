@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V14</title>
+  <title>安压记录 V15</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -832,7 +832,10 @@
 
 <script>
 const KEY='bp_records_v2';let records=[];let deferredPrompt=null;let analysisRange=7;
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+function toast(msg){const t=document.getElementById('toast');if(!t)return; t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
+function setText(id,val){const el=document.getElementById(id);if(el)el.textContent=val}
+function setHTML(id,val){const el=document.getElementById(id);if(el)el.innerHTML=val}
+function setValue(id,val){const el=document.getElementById(id);if(el)el.value=val}
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').style.display='block'});
 document.getElementById('installBtn').addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').style.display='none'}else{toast('iPhone请点Safari分享按钮，再选添加到主屏幕')}});
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
@@ -912,9 +915,54 @@ function classify(sys,dia){sys=Number(sys);dia=Number(dia);if(sys>=160||dia>=100
 function fmtDate(dt){const d=new Date(dt);if(isNaN(d))return dt;return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`}
 function avg(arr,key){const nums=arr.map(x=>Number(x[key])).filter(x=>!isNaN(x)&&x>0);if(!nums.length)return'--';return Math.round(nums.reduce((a,b)=>a+b,0)/nums.length)}
 function recentDays(n){const cut=new Date();cut.setDate(cut.getDate()-n);return records.filter(r=>new Date(r.dt)>=cut)}function todayRecords(){const t=new Date();const s=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;return records.filter(r=>String(r.dt).startsWith(s))}
-function renderStats(){const last=records[0];const todayN=todayRecords().length;document.getElementById('todayCount').textContent=`${todayN} 次`;const top=document.getElementById('todayCountTop');if(top)top.textContent=`${todayN} 次`;if(last){const c=classify(last.sys,last.dia);document.getElementById('lastBp').textContent=`${last.sys}/${last.dia}`;document.getElementById('lastHr').textContent=last.hr||'--';document.getElementById('lastStatus').textContent=c.text}else{['lastBp','lastHr','lastStatus'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='--'})}const r7=recentDays(7),r30=recentDays(30);document.getElementById('avg7Sys').textContent=avg(r7,'sys');document.getElementById('avg7Dia').textContent=avg(r7,'dia');document.getElementById('avg7Hr').textContent=avg(r7,'hr');document.getElementById('avg30Sys').textContent=avg(r30,'sys');document.getElementById('avg30Dia').textContent=avg(r30,'dia');document.getElementById('avg30Hr').textContent=avg(r30,'hr');const homeAbn=document.getElementById('homeAbnormal');if(homeAbn)homeAbn.textContent=r30.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length || 0}
+function renderStats(){
+  const last=records[0];
+  const todayN=todayRecords().length;
+  setText('todayCount',`${todayN} 次`);
+  setText('todayCountTop',`${todayN} 次`);
+  if(last){
+    const c=classify(last.sys,last.dia);
+    setText('lastBp',`${last.sys}/${last.dia}`);
+    setText('lastHr',last.hr||'--');
+    setText('lastStatus',c.text);
+  }else{
+    ['lastBp','lastHr','lastStatus'].forEach(id=>setText(id,'--'));
+  }
+  const r7=recentDays(7),r30=recentDays(30);
+  setText('avg7Sys',avg(r7,'sys'));
+  setText('avg7Dia',avg(r7,'dia'));
+  setText('avg7Hr',avg(r7,'hr'));
+  setText('avg30Sys',avg(r30,'sys'));
+  setText('avg30Dia',avg(r30,'dia'));
+  setText('avg30Hr',avg(r30,'hr'));
+  const abn=r30.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;
+  setText('homeAbnormal',abn || 0);
+}
 function recordHtml(r){const c=classify(r.sys,r.dia);const statusCls=c.text==='偏低'?'low':c.cls;const badgeCls=c.text==='偏低'?'low':c.cls;return `<div class="recordCardV13 ${statusCls}"><div class="recordV13Top"><div><div class="recordV13TitleRow"><div class="recordRoundIcon ${statusCls}">~</div><div class="recordBpMain"><strong>${r.sys}/${r.dia}</strong><span>mmHg</span></div></div></div><span class="statusBadgeNew ${badgeCls}">${c.text}</span></div><div class="metaGridNew"><div class="metaItemNew">📅 ${fmtDate(r.dt)}</div><div class="metaItemNew">${r.period==='晚上'||r.period==='睡前'?'🌙':'☀️'} ${r.period||'未记录'}</div><div class="metaItemNew">💪 ${r.arm||'未记录'}</div><div class="metaItemNew">🪑 ${r.position||'未记录'}</div><div class="metaItemNew">♡ 心率 ${r.hr||'--'} 次/分</div></div><div class="dividerThin"></div><div class="detailGridNew"><div class="detailRowNew"><span class="k">服药</span><span class="v">${r.tookMed||'未记录'}</span></div><div class="detailRowNew"><span class="k">状态</span><span class="v">${r.state||'未记录'}</span></div><div class="detailRowNew"><span class="k">症状</span><span class="v">${r.symptoms||'未记录'}</span></div><div class="detailRowNew"><span class="k">备注</span><span class="v">${r.note||'无'}</span></div></div><div class="recordBtnsNew"><button class="editSoft" onclick="editRecord('${r.id}')">✎ 编辑</button><button class="deleteSoft" onclick="deleteRecord('${r.id}')">🗑 删除</button></div></div>`}
-function renderRecords(){const q=(document.getElementById('filterText')?.value||'').trim().toLowerCase();const fp=(document.getElementById('filterPeriod')?.value||'');const fs=(document.getElementById('filterStatus')?.value||'');let list=records.filter(r=>JSON.stringify(r).toLowerCase().includes(q));if(fp)list=list.filter(r=>r.period===fp);if(fs){list=list.filter(r=>{const c=classify(r.sys,r.dia).text;if(fs==='stable')return c==='较稳定';if(fs==='high')return c==='偏高'||c==='明显偏高';if(fs==='low')return c==='偏低';return true})}const abnormalTotal=list.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;const symptomTotal=list.filter(r=>r.symptoms && !['无','无不适','未记录'].includes(String(r.symptoms).trim())).length;const a1=document.getElementById('sumRecordTotal');if(a1)a1.textContent=list.length;const a2=document.getElementById('sumRecordAbn');if(a2)a2.textContent=abnormalTotal;const a3=document.getElementById('sumRecordSym');if(a3)a3.textContent=symptomTotal;const box=document.getElementById('recordList');box.innerHTML=list.length?list.map(recordHtml).join(''):`<div class="empty">${q||fp||fs?'没有匹配结果，请调整筛选条件。':'暂无历史记录，先到首页新增一条记录吧。'}</div>`}
+function renderRecords(){
+  const q=(document.getElementById('filterText')?.value||'').trim().toLowerCase();
+  const fp=(document.getElementById('filterPeriod')?.value||'');
+  const fs=(document.getElementById('filterStatus')?.value||'');
+  let list=records.filter(r=>JSON.stringify(r).toLowerCase().includes(q));
+  if(fp)list=list.filter(r=>r.period===fp);
+  if(fs){
+    list=list.filter(r=>{
+      const c=classify(r.sys,r.dia).text;
+      if(fs==='stable')return c==='较稳定';
+      if(fs==='high')return c==='偏高'||c==='明显偏高';
+      if(fs==='low')return c==='偏低';
+      return true;
+    })
+  }
+  const abnormalTotal=list.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;
+  const symptomTotal=list.filter(r=>r.symptoms && !['无','无不适','未记录'].includes(String(r.symptoms).trim())).length;
+  setText('totalCount',`${list.length} 条`);
+  setText('sumRecordTotal',list.length);
+  setText('sumRecordAbn',abnormalTotal);
+  setText('sumRecordSym',symptomTotal);
+  const box=document.getElementById('recordList');
+  if(box)box.innerHTML=list.length?list.map(recordHtml).join(''):`<div class="empty">${q||fp||fs?'没有匹配结果，请调整筛选条件。':'暂无历史记录，先到首页新增一条记录吧。'}</div>`;
+}
 function toggleRecordFilters(){const p=document.getElementById('recordFilterPanel');if(p)p.classList.toggle('show')}
 function clearFilter(){const t=document.getElementById('filterText');if(t)t.value='';const p=document.getElementById('filterPeriod');if(p)p.value='';const s=document.getElementById('filterStatus');if(s)s.value='';renderAll()}
 function getChartSource(limit=30){return records.slice(0,limit).sort((a,b)=>new Date(a.dt)-new Date(b.dt))}
@@ -936,7 +984,13 @@ const high=source.filter(r=>r.sys>=140||r.dia>=90).length;const low=source.filte
 const as=Number(avg(source,'sys'))||0, ad=Number(avg(source,'dia'))||0, ah=Number(avg(source,'hr'))||0;document.getElementById('statSysV').textContent=as||'--';document.getElementById('statDiaV').textContent=ad||'--';document.getElementById('statHrV').textContent=ah||'--';document.getElementById('statSysBar').style.width=Math.min(100,Math.max(8,(as/160*100)))+'%';document.getElementById('statDiaBar').style.width=Math.min(100,Math.max(8,(ad/100*100)))+'%';document.getElementById('statHrBar').style.width=Math.min(100,Math.max(8,(ah/120*100)))+'%';
 const morning=records.filter(r=>r.period==='早晨');const night=records.filter(r=>r.period==='晚上'||r.period==='睡前');const morningAbn=morning.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60);const nightAbn=night.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60);document.getElementById('morningMain').textContent=morning.length?`${avg(morning,'sys')}/${avg(morning,'dia')} mmHg　${avg(morning,'hr')} 次/分`:'--/-- mmHg　-- 次/分';document.getElementById('nightMain').textContent=night.length?`${avg(night,'sys')}/${avg(night,'dia')} mmHg　${avg(night,'hr')} 次/分`:'--/-- mmHg　-- 次/分';document.getElementById('morningCount').textContent=morning.length;document.getElementById('nightCount').textContent=night.length;document.getElementById('morningAbn').textContent=morningAbn.length;document.getElementById('nightAbn').textContent=nightAbn.length;document.getElementById('morningRate').textContent=morning.length?pct(morning.length-morningAbn.length,morning.length):'--';document.getElementById('nightRate').textContent=night.length?pct(night.length-nightAbn.length,night.length):'--';
 const [stateTop,statePct]=topValue(source,'state');const [medTop,medPct]=topValue(source,'tookMed');const [periodTop,periodPct]=topValue(source,'period');document.getElementById('stateInsight').textContent=stateTop==='--'?'--':`${stateTop} 为主`;document.getElementById('stateRatio').textContent=statePct;document.getElementById('medInsight').textContent=medTop==='--'?'--':`${medTop} 为主`;document.getElementById('medRatio').textContent=medPct;document.getElementById('periodInsight').textContent=periodTop==='--'?'--':`${periodTop} 测量占比更高`;document.getElementById('periodRatio').textContent=periodPct;const bullets=buildBehaviorBullets(source);document.getElementById('analysisBullets').innerHTML=bullets.map(t=>`<li>${t}</li>`).join('');const summary=buildAnalysisSummary(source);document.getElementById('analysisSummaryBox').innerHTML=summary.map(t=>`<div class="checkItem"><span class="checkMark">✓</span><span>${t}</span></div>`).join('');const report=getReport();document.getElementById('doctorReport').textContent=report;renderPrintReport();renderDoctorPreview()}
-function renderAll(){load();renderStats();renderRecords();renderChart();renderAnalysis()}
+function renderAll(){
+  load();
+  try{renderStats()}catch(e){console.warn('renderStats error',e)}
+  try{renderRecords()}catch(e){console.warn('renderRecords error',e)}
+  try{renderChart()}catch(e){console.warn('renderChart error',e)}
+  try{renderAnalysis()}catch(e){console.warn('renderAnalysis error',e)}
+}
 document.getElementById('bpForm').addEventListener('submit',e=>{e.preventDefault();const id=document.getElementById('bpForm').dataset.editing||String(Date.now());const r={id,dt:dt.value,sys:Number(sys.value),dia:Number(dia.value),hr:Number(hr.value)||'',period:period.value,arm:arm.value,position:position.value,tookMed:tookMed.value,state:state.value,meds:meds.value.trim(),symptoms:symptoms.value.trim(),note:note.value.trim()};records=records.filter(x=>x.id!==id);records.push(r);save();e.target.reset();delete e.target.dataset.editing;fillNow();renderAll();toast('已保存')}
 )
 function editRecord(id){const r=records.find(x=>x.id===id);if(!r)return;showPage('home',document.querySelector('.tab'));document.getElementById('bpForm').dataset.editing=id;for(const k of ['dt','sys','dia','hr','period','arm','position','tookMed','state','meds','symptoms','note'])document.getElementById(k).value=r[k]||'';window.scrollTo({top:0,behavior:'smooth'})}
@@ -1111,7 +1165,7 @@ function importJSONBackup(event){
   reader.readAsText(file, 'utf-8');
 }
 
-function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V11',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V15',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
 async function copyReport(){try{await navigator.clipboard.writeText(getReport());toast('就诊摘要已复制')}catch(e){alert('复制失败，可手动选中文本复制')}}function clearAll(){if(confirm('确定清空全部记录吗？此操作不可恢复。')){localStorage.removeItem(KEY);records=[];renderAll();toast('已清空')}}
 fillNow();renderAll();
 </script>
