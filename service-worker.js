@@ -1,4 +1,4 @@
-const CACHE_NAME = 'anya-record-v5';
+const CACHE_NAME = 'anya-record-v6';
 const ASSETS = [
   './',
   './index.html',
