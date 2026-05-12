@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V4</title>
+  <title>安压记录 V5</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -230,12 +230,13 @@
       <div class="notice" style="margin-top:12px">常用家庭血压参考：多次家庭自测平均值达到或超过 135/85 mmHg，通常需要重点关注并带记录给医生评估。</div></div></div></section>
 
     <section id="export" class="page"><div class="card"><h2>导出与备份</h2><div id="exportBtns" class="btnbar">
-      <button onclick="exportCSV()">导出 CSV</button><button class="good" onclick="exportJSON()">导出备份</button><button class="secondary" onclick="exportChartPNG()">导出趋势图</button><button class="secondary" onclick="printDoctorPDF()">医生版 PDF</button><button class="secondary" onclick="copyReport()">复制就诊摘要</button><button class="danger" onclick="clearAll()">清空全部</button>
+      <button onclick="exportCSV()">导出 CSV</button><button class="good" onclick="exportJSON()">导出备份</button><button class="secondary" onclick="document.getElementById(\'importFile\').click()">选择备份导入</button><button class="secondary" onclick="exportChartPNG()">导出趋势图</button><button class="secondary" onclick="printDoctorPDF()">医生版 PDF</button><button class="secondary" onclick="copyReport()">复制就诊摘要</button><button class="danger" onclick="clearAll()">清空全部</button>
     </div><h2 style="margin-top:18px">就诊摘要</h2><div id="doctorReport" class="report"></div><div id="printReport" class="printOnly"></div></div></section>
   </div>
 
   <nav class="tabs noPrint"><button class="tab active" onclick="showPage('home',this)">首页</button><button class="tab" onclick="showPage('records',this)">记录</button><button class="tab" onclick="showPage('analysis',this)">分析</button><button class="tab" onclick="showPage('export',this)">导出</button></nav>
   <div id="toast" class="toast">已保存</div>
+  <input id="importFile" type="file" accept=".json,application/json" style="display:none" onchange="importJSONBackup(event)">
 
 <script>
 const KEY='bp_records_v2';let records=[];let deferredPrompt=null;
@@ -354,7 +355,55 @@ function printDoctorPDF(){
   setTimeout(()=>window.print(),100);
 }
 
-function escapeCSV(v){v=String(v??'');return `"${v.replace(/"/g,'""')}"`}function exportCSV(){const headers=['日期时间','收缩压','舒张压','心率','测量时段','左右手','姿势','是否服药','药物','测量前状态','症状','备注','自动判断'];const rows=records.map(r=>[fmtDate(r.dt),r.sys,r.dia,r.hr,r.period,r.arm,r.position,r.tookMed,r.meds,r.state,r.symptoms,r.note,classify(r.sys,r.dia).text]);const csv='\ufeff'+[headers,...rows].map(row=>row.map(escapeCSV).join(',')).join('\n');downloadBlob(csv,'安压记录_血压数据.csv','text/csv;charset=utf-8')}function exportJSON(){downloadBlob(JSON.stringify(records,null,2),'安压记录_备份.json','application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function escapeCSV(v){v=String(v??'');return `"${v.replace(/"/g,'""')}"`}function exportCSV(){const headers=['日期时间','收缩压','舒张压','心率','测量时段','左右手','姿势','是否服药','药物','测量前状态','症状','备注','自动判断'];const rows=records.map(r=>[fmtDate(r.dt),r.sys,r.dia,r.hr,r.period,r.arm,r.position,r.tookMed,r.meds,r.state,r.symptoms,r.note,classify(r.sys,r.dia).text]);const csv='\ufeff'+[headers,...rows].map(row=>row.map(escapeCSV).join(',')).join('\n');downloadBlob(csv,'安压记录_血压数据.csv','text/csv;charset=utf-8')}
+function normalizeImportedRecords(data){
+  if(!Array.isArray(data)) throw new Error('备份文件格式不正确');
+  return data.map((r,idx)=>({
+    id: String(r.id || Date.now()+idx),
+    dt: r.dt || r.date || r.time || nowLocal(),
+    sys: Number(r.sys || r.systolic || r['收缩压'] || r['高压']),
+    dia: Number(r.dia || r.diastolic || r['舒张压'] || r['低压']),
+    hr: Number(r.hr || r.heartRate || r['心率']) || '',
+    period: r.period || r['测量时段'] || '其他',
+    arm: r.arm || r['左右手'] || '未记录',
+    position: r.position || r['姿势'] || r['测量姿势'] || '未记录',
+    tookMed: r.tookMed || r['是否服药'] || '不确定',
+    state: r.state || r['测量前状态'] || '其他',
+    meds: r.meds || r['药物'] || r['药物/剂量'] || '',
+    symptoms: r.symptoms || r['症状'] || '',
+    note: r.note || r['备注'] || ''
+  })).filter(r=>r.dt && r.sys && r.dia);
+}
+function importJSONBackup(event){
+  const file = event.target.files && event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(){
+    try{
+      const imported = normalizeImportedRecords(JSON.parse(reader.result));
+      if(!imported.length){alert('没有读取到有效血压记录'); return;}
+      const mode = confirm(`读取到 ${imported.length} 条记录。\n\n点“确定”：合并到现有记录\n点“取消”：覆盖当前全部记录`);
+      if(mode){
+        const map = new Map(records.map(r=>[String(r.id), r]));
+        imported.forEach(r=>map.set(String(r.id), r));
+        records = Array.from(map.values());
+      }else{
+        if(!confirm('确定覆盖当前全部记录吗？覆盖前建议先导出备份。')) return;
+        records = imported;
+      }
+      save();
+      renderAll();
+      toast('备份已导入');
+    }catch(e){
+      alert('导入失败：请选择本 App 导出的 JSON 备份文件');
+    }finally{
+      event.target.value = '';
+    }
+  };
+  reader.readAsText(file, 'utf-8');
+}
+
+function exportJSON(){downloadBlob(JSON.stringify(records,null,2),'安压记录_备份.json','application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
 async function copyReport(){try{await navigator.clipboard.writeText(getReport());toast('就诊摘要已复制')}catch(e){alert('复制失败，可手动选中文本复制')}}function clearAll(){if(confirm('确定清空全部记录吗？此操作不可恢复。')){localStorage.removeItem(KEY);records=[];renderAll();toast('已清空')}}
 fillNow();renderAll();
 </script>
