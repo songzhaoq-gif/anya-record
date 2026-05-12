@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V6</title>
+  <title>安压记录 V9</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -61,6 +61,36 @@
       width:1px;
       height:1px;
       opacity:0;
+    }
+
+
+    .scanTip{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      color:#1e40af;
+      font-size:13px;
+      line-height:1.6;
+    }
+    .scanResult{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:#f8fafc;
+      border:1px solid #e5e7eb;
+      color:#374151;
+      font-size:13px;
+      line-height:1.6;
+      display:none;
+      white-space:pre-wrap;
+    }
+    .scanBtn{
+      background:#0f766e;
+    }
+    .scanBtn:hover{
+      background:#0d9488;
     }
 
     .btnbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
@@ -155,6 +185,88 @@
       line-height:1.5;
     }
 
+    
+    .heroCard{background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.78);border-radius:28px;padding:16px 18px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:14px}
+    .heroLeft{display:flex;align-items:center;gap:12px}
+    .heroIcon{width:56px;height:56px;border-radius:20px;background:linear-gradient(135deg,#2563eb,#60a5fa);display:grid;place-items:center;color:#fff;font-size:26px;box-shadow:0 12px 24px rgba(37,99,235,.25)}
+    .heroTitle{font-size:24px;font-weight:950;letter-spacing:.5px;margin:0;color:#172554}
+    .heroDesc{font-size:14px;color:#64748b;margin-top:4px}
+    .ghostPill{border:1px solid #dbeafe;background:#fff;border-radius:999px;padding:12px 14px;font-weight:800;color:#1e3a8a;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 18px rgba(15,23,42,.06)}
+    .rangeTabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:rgba(255,255,255,.75);border:1px solid #dbeafe;padding:7px;border-radius:999px;margin-bottom:14px;box-shadow:0 10px 24px rgba(15,23,42,.06)}
+    .rangeBtn{background:transparent;color:#64748b;box-shadow:none;border-radius:999px;padding:12px 10px;font-size:14px}
+    .rangeBtn.active{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;box-shadow:0 10px 18px rgba(37,99,235,.22)}
+    .metricGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:780px){.metricGrid{grid-template-columns:repeat(4,1fr)}}
+    .metricCard{background:#fff;border:1px solid #e5e7eb;border-radius:22px;padding:14px 14px;box-shadow:0 10px 24px rgba(15,23,42,.05)}
+    .metricTop{display:flex;align-items:center;gap:8px;color:#1e3a8a;font-weight:900;font-size:14px}
+    .miniIcon{width:26px;height:26px;border-radius:999px;display:grid;place-items:center;color:#fff;font-size:13px}
+    .i-blue{background:#3b82f6}.i-green{background:#22c55e}.i-orange{background:#fb923c}.i-purple{background:#a855f7}
+    .metricMain{font-size:25px;font-weight:950;margin-top:14px;color:#172554;line-height:1.05}
+    .metricUnit{font-size:13px;color:#64748b;font-weight:700;margin-left:4px}
+    .metricFoot{font-size:13px;color:#64748b;margin-top:10px}
+    .metricFoot .down{color:#16a34a;font-weight:900}.metricFoot .up{color:#dc2626;font-weight:900}
+    .analysisCard{background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.7);border-radius:26px;padding:16px;box-shadow:var(--shadow)}
+    .sectionHead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+    .sectionTitle{font-size:18px;font-weight:950;color:#1e3a8a;margin:0}.sectionSub{font-size:12px;color:#64748b;font-weight:700}
+    .miniSelect{border:1px solid #dbeafe;border-radius:999px;background:#fff;color:#1e3a8a;padding:8px 12px;font-weight:800}
+    .analysisChart{width:100%;height:300px;background:#fff;border:0;border-radius:18px}
+    .splitGrid{display:grid;grid-template-columns:1fr;gap:12px}.splitGrid.two{grid-template-columns:1fr}@media(min-width:780px){.splitGrid.two{grid-template-columns:1fr 1fr}}
+    .donutWrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+    .donut{width:152px;height:152px;border-radius:50%;display:grid;place-items:center;position:relative;flex:none}
+    .donut::after{content:'';position:absolute;inset:18px;background:#fff;border-radius:50%;box-shadow:inset 0 0 0 1px #e5e7eb}
+    .donutCenter{position:relative;z-index:1;text-align:center}.donutCenter b{display:block;font-size:34px;color:#172554;line-height:1}.donutCenter span{font-size:13px;color:#64748b;font-weight:700}
+    .legendCol{display:grid;gap:10px;flex:1;min-width:180px}.legendItem{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:#334155}.legendLabel{display:flex;align-items:center;gap:8px}.dot{width:12px;height:12px;border-radius:999px;display:inline-block}
+    .statRows{display:grid;gap:12px}.statRow{display:grid;grid-template-columns:120px 60px 1fr;gap:10px;align-items:center}.barTrack{height:10px;background:#e5eefc;border-radius:999px;overflow:hidden}.barFill{height:100%;border-radius:999px}
+    .duoCard{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:780px){.duoCard{grid-template-columns:1fr 1fr}}
+    .timeBox{border:1px solid #e5e7eb;border-radius:22px;padding:16px;background:#fff}.timeTitle{display:flex;align-items:center;gap:8px;color:#1e3a8a;font-weight:900;margin-bottom:10px}.timeValue{font-size:18px;font-weight:950;color:#172554}.timeMeta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.timeMeta div{background:#f8fafc;border-radius:16px;padding:10px;text-align:center}.timeMeta b{display:block;color:#2563eb;font-size:18px}.timeMeta span{font-size:12px;color:#64748b}
+    .insightWrap{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:780px){.insightWrap{grid-template-columns:320px 1fr}}
+    .insightList{display:grid;gap:10px}.insightTile{display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:10px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:10px 12px}.insightIco{width:34px;height:34px;border-radius:10px;background:#e0e7ff;color:#2563eb;display:grid;place-items:center;font-size:18px}.insightK{font-size:13px;color:#475569;font-weight:800}.insightV{font-size:13px;color:#1e3a8a;font-weight:900}.bulletList{display:grid;gap:10px;padding-left:18px;margin:0}.bulletList li{color:#334155;line-height:1.7;font-size:14px}
+    .suggestionBox{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:780px){.suggestionBox{grid-template-columns:1fr 120px}}
+    .checkList{display:grid;gap:10px}.checkItem{display:flex;gap:10px;align-items:flex-start;color:#334155;font-size:14px;line-height:1.7}.checkMark{width:20px;height:20px;border-radius:999px;background:#dbeafe;color:#2563eb;display:grid;place-items:center;flex:none;font-weight:900;margin-top:1px}
+    .illusShield{width:92px;height:92px;border-radius:26px;background:linear-gradient(135deg,#dbeafe,#eff6ff);display:grid;place-items:center;justify-self:end;font-size:44px;color:#2563eb;box-shadow:inset 0 0 0 1px #dbeafe}
+    .exportStack{display:grid;gap:16px}
+    .exportSection{background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.7);border-radius:28px;padding:18px;box-shadow:var(--shadow)}
+    .exportHead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.secNo{width:38px;height:38px;border-radius:999px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:950;font-size:20px}.tagHot{background:#ffedd5;color:#ea580c;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:900}.exportTitle{font-size:20px;font-weight:950;color:#172554}.exportDesc{font-size:14px;color:#64748b;margin-top:6px;line-height:1.6}
+    .doctorWrap{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}@media(min-width:780px){.doctorWrap{grid-template-columns:1.45fr .85fr}}
+    .toolGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}@media(min-width:780px){.toolGrid{grid-template-columns:repeat(4,1fr)}}
+    .previewMini{border:1px solid #dbeafe;border-radius:20px;background:linear-gradient(180deg,#ffffff,#f8fbff);padding:14px;min-height:290px;box-shadow:inset 0 0 0 1px rgba(219,234,254,.7)}
+    .previewHeader{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#64748b;font-weight:800;margin-bottom:8px}.previewBadge{display:inline-flex;align-items:center;gap:6px;color:#1e3a8a;font-weight:900}
+    .previewBig{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin:8px 0 10px}.previewBig b{font-size:34px;color:#172554}.previewBig span{font-size:13px;color:#64748b}.previewCols{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;color:#64748b;margin-bottom:8px}.previewLine{height:80px;border-radius:16px;background:linear-gradient(180deg,#f8fafc,#eef2ff);position:relative;overflow:hidden;border:1px solid #dbeafe;margin-bottom:8px}.previewLine svg{position:absolute;inset:0;width:100%;height:100%}.previewSmallText{font-size:10px;color:#64748b;line-height:1.5}
+    .actionCard{border:1px solid #dbeafe;background:#fff;border-radius:22px;padding:18px 12px;text-align:center;box-shadow:none}.actionIcon{font-size:28px;display:block;margin-bottom:10px}.actionTitle{font-size:16px;font-weight:950;color:#172554}.actionSub{font-size:12px;color:#64748b;margin-top:6px;line-height:1.4}
+    .ctaRow{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}@media(min-width:780px){.ctaRow{grid-template-columns:1.2fr .8fr}}
+    .btnLarge{padding:16px 18px;border-radius:22px;font-size:16px}.btnOutline{background:#fff;color:#172554;border:2px solid #3b82f6;box-shadow:none}.btnOutline:hover{background:#eff6ff}
+    .noteCard{border:1px solid #93c5fd;background:#f8fbff;border-radius:24px;padding:16px 18px}.noteTitle{display:flex;align-items:center;gap:10px;color:#1e3a8a;font-weight:950;font-size:18px}.noteList{margin:12px 0 0;padding-left:22px;color:#334155;line-height:1.9;font-size:14px}
+    .tinyLabel{font-size:12px;color:#64748b;font-weight:700}
+
+
+    .homeBanner{background:linear-gradient(135deg,#2563eb 0%,#1d4ed8 40%,#60a5fa 100%);border-radius:30px;padding:20px 18px;color:#fff;box-shadow:0 20px 40px rgba(37,99,235,.24);position:relative;overflow:hidden;margin-bottom:14px}
+    .homeBanner::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.12)}
+    .homeBanner::before{content:'';position:absolute;right:40px;bottom:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.08)}
+    .bannerTop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;position:relative;z-index:1}
+    .bannerTitle{font-size:26px;font-weight:950;margin:0}.bannerDesc{margin-top:6px;font-size:14px;color:rgba(255,255,255,.9);line-height:1.6;max-width:520px}
+    .bannerTag{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 12px;background:rgba(255,255,255,.16);font-size:12px;font-weight:800;margin-top:10px}
+    .bannerActions{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1;margin-top:16px}.bannerActions button{box-shadow:none;background:#fff;color:#1d4ed8}.bannerActions button.secondary{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .overviewCard{background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.7);border-radius:28px;padding:16px;box-shadow:var(--shadow)}
+    .overviewHead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.overviewHead h2{margin:0;font-size:18px;color:#172554}
+    .overviewSub{font-size:12px;color:#64748b;font-weight:700}
+    .quickMetrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}@media(min-width:780px){.quickMetrics{grid-template-columns:repeat(4,1fr)}}
+    .quickMetric{background:#fff;border:1px solid #e5e7eb;border-radius:22px;padding:14px;box-shadow:0 10px 24px rgba(15,23,42,.05)}
+    .qmTop{display:flex;align-items:center;gap:8px;color:#1e3a8a;font-size:14px;font-weight:900}.qmIcon{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;color:#fff;font-size:14px}.qmBlue{background:#3b82f6}.qmGreen{background:#22c55e}.qmOrange{background:#fb923c}.qmPurple{background:#8b5cf6}
+    .qmValue{font-size:28px;font-weight:950;color:#172554;line-height:1.08;margin-top:12px}.qmHint{font-size:13px;color:#64748b;margin-top:8px;line-height:1.5}
+    .sectionCard{background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.7);border-radius:28px;padding:18px;box-shadow:var(--shadow)}
+    .sectionHeader{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.sectionHeader h2{margin:0;font-size:19px;color:#172554}.sectionHeader p{margin:4px 0 0;color:#64748b;font-size:13px}
+    .miniPill{border-radius:999px;padding:9px 12px;background:#eef2ff;color:#2563eb;font-size:12px;font-weight:800;white-space:nowrap}
+    .inputGroup{margin-bottom:6px}.fieldHint{font-size:12px;color:#64748b;margin-top:4px}
+    .chartCardHome{background:linear-gradient(180deg,#ffffff,#f8fbff);border:1px solid #dbeafe;border-radius:26px;padding:16px;box-shadow:var(--shadow)}
+    .recordToolCard{background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.7);border-radius:28px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px}
+    .recordSummaryGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.recordSummaryItem{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:12px;text-align:center}.recordSummaryItem b{display:block;font-size:22px;color:#172554}.recordSummaryItem span{font-size:12px;color:#64748b}
+    .recordCardNew{background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:16px;margin:12px 0;box-shadow:0 12px 26px rgba(15,23,42,.05)}
+    .recordMainTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}.recordNums{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}.recordNums strong{font-size:34px;line-height:1;color:#172554}.recordUnit{font-size:14px;color:#64748b;font-weight:800}.recordTime{margin-top:8px;color:#64748b;font-size:13px;line-height:1.6}
+    .tagRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.tagChip{padding:7px 10px;border-radius:999px;background:#f8fafc;border:1px solid #e5e7eb;color:#475569;font-size:12px;font-weight:800}
+    .detailGrid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}@media(min-width:780px){.detailGrid{grid-template-columns:repeat(2,1fr)}}
+    .detailItem{background:#f8fafc;border-radius:16px;padding:12px 12px}.detailItem .k{font-size:12px;color:#64748b;font-weight:700;margin-bottom:4px}.detailItem .v{font-size:14px;color:#1f2937;line-height:1.6;font-weight:800;white-space:pre-wrap;word-break:break-word}
+    .recordActionRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.recordActionRow button{box-shadow:none;border-radius:16px;padding:11px 16px}.recordActionRow button.secondary{background:#eef2f7}
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff}
@@ -192,6 +304,7 @@
       .printMiniCard b{font-size:16px}
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 </head>
 <body>
   <div class="safe-top"></div>
@@ -201,84 +314,340 @@
       <button id="installBtn" class="installBtn">安装到桌面</button>
     </header>
 
-    <section id="home" class="page active">
-      <div class="grid three">
-        <div class="card"><h2>今日记录 <span class="small" id="todayCount">0 次</span></h2><div class="stats">
-          <div class="stat"><div class="label">最近一次</div><div class="value" id="lastBp">--/--</div><div class="hint">mmHg</div></div>
-          <div class="stat"><div class="label">心率</div><div class="value" id="lastHr">--</div><div class="hint">次/分钟</div></div>
-          <div class="stat"><div class="label">状态</div><div class="value" id="lastStatus">--</div><div class="hint">自动判断</div></div>
-        </div></div>
-        <div class="card"><h2>7天平均</h2><div class="stats">
-          <div class="stat"><div class="label">收缩压</div><div class="value" id="avg7Sys">--</div><div class="hint">高压</div></div>
-          <div class="stat"><div class="label">舒张压</div><div class="value" id="avg7Dia">--</div><div class="hint">低压</div></div>
-          <div class="stat"><div class="label">心率</div><div class="value" id="avg7Hr">--</div><div class="hint">平均</div></div>
-        </div></div>
-        <div class="card"><h2>30天平均</h2><div class="stats">
-          <div class="stat"><div class="label">收缩压</div><div class="value" id="avg30Sys">--</div><div class="hint">高压</div></div>
-          <div class="stat"><div class="label">舒张压</div><div class="value" id="avg30Dia">--</div><div class="hint">低压</div></div>
-          <div class="stat"><div class="label">心率</div><div class="value" id="avg30Hr">--</div><div class="hint">平均</div></div>
-        </div></div>
+        <section id="home" class="page active">
+      <div class="homeBanner">
+        <div class="bannerTop">
+          <div>
+            <h2 class="bannerTitle">安压记录</h2>
+            <div class="bannerDesc">更舒适地记录血压、心率、服药与症状信息。新增拍照扫描录入，更适合日常监测与门诊复查。</div>
+            <div class="bannerTag">🩺 家庭血压监测 · 医生复查整理</div>
+          </div>
+          <div class="miniPill" style="background:rgba(255,255,255,.18);color:#fff">今日 <span id="todayCountTop">0 次</span></div>
+        </div>
+        <div class="bannerActions">
+          <button type="button" onclick="document.getElementById('scanFile').click()">📷 扫描录入</button>
+          <button type="button" class="secondary" onclick="showPage('export',document.querySelectorAll('.tab')[3])">📄 导出就诊包</button>
+        </div>
       </div>
 
-      <div class="grid two" style="margin-top:14px">
-        <div class="card" id="formCard"><h2>新增记录 <span class="small">建议早晚各一次</span></h2>
-          <form id="bpForm"><div class="formgrid">
-            <div class="wide"><label>日期时间</label><input type="datetime-local" id="dt" required></div>
-            <div><label>收缩压/高压</label><input type="number" id="sys" min="50" max="260" placeholder="如 135" required></div>
-            <div><label>舒张压/低压</label><input type="number" id="dia" min="30" max="160" placeholder="如 84" required></div>
-            <div><label>心率</label><input type="number" id="hr" min="30" max="220" placeholder="如 72"></div>
-            <div><label>测量时段</label><select id="period"><option>早晨</option><option>中午</option><option>晚上</option><option>睡前</option><option>其他</option></select></div>
-            <div><label>左右手</label><select id="arm"><option>左臂</option><option>右臂</option><option>未记录</option></select></div>
-            <div><label>测量姿势</label><select id="position"><option>坐位</option><option>卧位</option><option>站立</option><option>未记录</option></select></div>
-            <div><label>是否服药</label><select id="tookMed"><option>是</option><option>否</option><option>不确定</option></select></div>
-            <div><label>测量前状态</label><select id="state"><option>安静</option><option>饭后</option><option>运动后</option><option>情绪波动</option><option>饮酒后</option><option>睡眠不足</option><option>其他</option></select></div>
-            <div class="wide"><label>药物名称/剂量</label><input id="meds" placeholder="如：倍博特 1片；瑞舒伐他汀 10mg"></div>
-            <div class="wide"><label>症状</label><input id="symptoms" placeholder="如：头鸣、头晕、胸闷、心慌、无不适"></div>
-            <div class="wide"><label>备注</label><textarea id="note" placeholder="如：昨晚睡眠、饮食、复查前说明等"></textarea></div>
-          </div><div class="btnbar"><button type="submit">保存记录</button><button type="button" class="secondary" onclick="fillNow()">当前时间</button><button type="button" class="secondary" onclick="quickMedication()">常用药</button></div></form>
+      <div class="overviewCard" style="margin-bottom:14px">
+        <div class="overviewHead"><div><h2>今日概览</h2><div class="overviewSub">快速查看最近状态与趋势</div></div><div class="miniPill">实时更新</div></div>
+        <div class="quickMetrics">
+          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmBlue">📌</span>最近一次</div><div class="qmValue" id="lastBp">--/--</div><div class="qmHint"><span id="lastStatus">--</span>　·　心率 <span id="lastHr">--</span> 次/分</div></div>
+          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmGreen">7</span>近7天平均</div><div class="qmValue"><span id="avg7Sys">--</span>/<span id="avg7Dia">--</span></div><div class="qmHint">平均心率 <span id="avg7Hr">--</span> 次/分</div></div>
+          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmOrange">30</span>近30天平均</div><div class="qmValue"><span id="avg30Sys">--</span>/<span id="avg30Dia">--</span></div><div class="qmHint">平均心率 <span id="avg30Hr">--</span> 次/分</div></div>
+          <div class="quickMetric"><div class="qmTop"><span class="qmIcon qmPurple">!</span>重点关注</div><div class="qmValue" id="homeAbnormal">--</div><div class="qmHint">近30天异常/需关注记录</div></div>
         </div>
-        <div class="card"><h2>趋势图 <span class="small">最近 30 条</span></h2><canvas id="chart" width="800" height="360"></canvas>
-          <div class="notice" style="margin-top:12px">提醒：本工具用于日常记录和复查整理，不替代医生诊断。若多次明显偏高、明显偏低，或伴随胸痛、明显气短、肢体无力等情况，应及时就医。</div></div>
+      </div>
+
+      <div class="grid two">
+        <div class="sectionCard" id="formCard"><div class="sectionHeader"><div><h2>新增记录</h2><p>建议固定早晨起床后、晚上睡前各记录一次</p></div><div class="miniPill">支持拍照扫描</div></div>
+          <form id="bpForm"><div class="formgrid">
+            <div class="wide inputGroup"><label>日期时间</label><input type="datetime-local" id="dt" required><div class="fieldHint">默认当前时间，可手动调整</div></div>
+            <div class="inputGroup"><label>收缩压 / 高压</label><input type="number" id="sys" min="50" max="260" placeholder="如 135" required></div>
+            <div class="inputGroup"><label>舒张压 / 低压</label><input type="number" id="dia" min="30" max="160" placeholder="如 84" required></div>
+            <div class="inputGroup"><label>心率</label><input type="number" id="hr" min="30" max="220" placeholder="如 72"></div>
+            <div class="inputGroup"><label>测量时段</label><select id="period"><option>早晨</option><option>中午</option><option>晚上</option><option>睡前</option><option>其他</option></select></div>
+            <div class="inputGroup"><label>左右手</label><select id="arm"><option>左臂</option><option>右臂</option><option>未记录</option></select></div>
+            <div class="inputGroup"><label>测量姿势</label><select id="position"><option>坐位</option><option>卧位</option><option>站立</option><option>未记录</option></select></div>
+            <div class="inputGroup"><label>是否服药</label><select id="tookMed"><option>是</option><option>否</option><option>不确定</option></select></div>
+            <div class="inputGroup"><label>测量前状态</label><select id="state"><option>安静</option><option>饭后</option><option>运动后</option><option>情绪波动</option><option>饮酒后</option><option>睡眠不足</option><option>其他</option></select></div>
+            <div class="wide inputGroup"><label>药物名称 / 剂量</label><input id="meds" placeholder="如：倍博特 1片；瑞舒伐他汀 10mg"></div>
+            <div class="wide inputGroup"><label>症状</label><input id="symptoms" placeholder="如：头鸣、头晕、胸闷、心慌、无不适"></div>
+            <div class="wide inputGroup"><label>备注</label><textarea id="note" placeholder="如：昨晚睡眠、饮食、复查前说明等"></textarea></div>
+          </div>
+          <div class="btnbar"><button type="submit">保存记录</button><button type="button" class="scanBtn" onclick="document.getElementById('scanFile').click()">拍照扫描录入</button><button type="button" class="secondary" onclick="fillNow()">当前时间</button><button type="button" class="secondary" onclick="quickMedication()">常用药</button></div>
+          <div class="scanTip">拍照建议：让血压计屏幕尽量占满画面，避免反光，拍清楚高压、低压、心率。识别后请确认数字再保存。</div><div id="scanResult" class="scanResult"></div></form>
+        </div>
+        <div class="chartCardHome"><div class="sectionHeader"><div><h2>近期趋势</h2><p>最近 30 条血压 / 心率变化</p></div><div class="miniPill">自动更新</div></div><canvas id="chart" width="800" height="360"></canvas>
+          <div class="notice" style="margin-top:14px">提醒：本工具用于日常记录和复查整理，不替代医生诊断。若多次明显偏高、明显偏低，或伴随胸痛、明显气短、肢体无力等情况，应及时就医。</div></div>
       </div>
     </section>
 
-    <section id="records" class="page"><div class="card"><h2>历史记录 <span class="small" id="totalCount">0 条</span></h2>
-      <div class="searchrow noPrint"><div><label>筛选关键词</label><input id="filterText" placeholder="可搜：头鸣、倍博特、早晨、右臂等" oninput="renderAll()"></div><button class="secondary" onclick="clearFilter()">清空</button></div>
-      <div id="recordList"></div></div></section>
+        <section id="records" class="page">
+      <div class="recordToolCard">
+        <div class="sectionHeader"><div><h2>历史记录</h2><p>支持关键词筛选、编辑与删除</p></div><div class="miniPill"><span id="totalCount">0 条</span></div></div>
+        <div class="searchrow noPrint"><div><label>筛选关键词</label><input id="filterText" placeholder="可搜：头鸣、倍博特、早晨、右臂等" oninput="renderAll()"></div><button class="secondary" onclick="clearFilter()">清空</button></div>
+        <div class="recordSummaryGrid">
+          <div class="recordSummaryItem"><b id="sumRecordTotal">0</b><span>总记录数</span></div>
+          <div class="recordSummaryItem"><b id="sumRecordAbn">0</b><span>异常记录</span></div>
+          <div class="recordSummaryItem"><b id="sumRecordSym">0</b><span>有症状记录</span></div>
+        </div>
+      </div>
+      <div id="recordList"></div>
+    </section>
 
-    <section id="analysis" class="page"><div class="grid two"><div class="card"><h2>分析摘要</h2><div id="analysisBox" class="report"></div></div><div class="card"><h2>早晚对比</h2>
-      <div class="stats"><div class="stat"><div class="label">早晨平均</div><div class="value" id="morningAvg">--/--</div><div class="hint">mmHg</div></div>
-      <div class="stat"><div class="label">晚上/睡前平均</div><div class="value" id="nightAvg">--/--</div><div class="hint">mmHg</div></div>
-      <div class="stat"><div class="label">异常记录</div><div class="value" id="abnormalCount">--</div><div class="hint">按阈值估算</div></div></div>
-      <div class="notice" style="margin-top:12px">常用家庭血压参考：多次家庭自测平均值达到或超过 135/85 mmHg，通常需要重点关注并带记录给医生评估。</div></div></div></section>
+        <section id="analysis" class="page">
+      <div class="heroCard">
+        <div class="heroLeft">
+          <div class="heroIcon">📈</div>
+          <div>
+            <div class="heroTitle">分析</div>
+            <div class="heroDesc">解读血压趋势，洞察健康状态</div>
+          </div>
+        </div>
+        <button class="ghostPill secondary" onclick="toast('可通过 7天 / 30天 / 全部 切换分析范围')">📅 选择范围</button>
+      </div>
+      <div class="rangeTabs">
+        <button id="range7" class="rangeBtn active" onclick="setAnalysisRange(7,this)">7天</button>
+        <button id="range30" class="rangeBtn" onclick="setAnalysisRange(30,this)">30天</button>
+        <button id="rangeAll" class="rangeBtn" onclick="setAnalysisRange(0,this)">全部</button>
+      </div>
 
-    <section id="export" class="page"><div class="card"><h2>导出与备份</h2><div id="exportBtns" class="btnbar">
-      <button onclick="exportCSV()">导出 CSV</button><button class="good" onclick="exportJSON()">导出备份</button><label class="importLabel">导入备份<input id="importFile" type="file" accept=".json,application/json" onchange="importJSONBackup(event)"></label><button class="secondary" onclick="exportChartPNG()">导出趋势图</button><button class="secondary" onclick="printDoctorPDF()">医生版 PDF</button><button class="secondary" onclick="copyReport()">复制就诊摘要</button><button class="danger" onclick="clearAll()">清空全部</button>
-    </div><h2 style="margin-top:18px">就诊摘要</h2><div id="doctorReport" class="report"></div><div id="printReport" class="printOnly"></div></div></section>
+      <div class="metricGrid" style="margin-bottom:14px">
+        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-blue">✓</span>近7天平均血压</div><div class="metricMain" id="cardAvg7">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot">较上周期 <span id="trend7" class="down">--</span></div></div>
+        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-green">📅</span>近30天平均血压</div><div class="metricMain" id="cardAvg30">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot">较上周期 <span id="trend30" class="down">--</span></div></div>
+        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-orange">!</span>异常记录</div><div class="metricMain" id="cardAbnormal">-- <span class="metricUnit">次</span></div><div class="metricFoot">占比 <span id="abnormalRate">--</span></div></div>
+        <div class="metricCard"><div class="metricTop"><span class="miniIcon i-purple">⏰</span>最近一次</div><div class="metricMain" id="cardLatest">--/-- <span class="metricUnit">mmHg</span></div><div class="metricFoot" id="cardLatestSub">--</div></div>
+      </div>
+
+      <div class="analysisCard" style="margin-bottom:14px">
+        <div class="sectionHead"><div><div class="sectionTitle">血压与心率趋势</div></div><div class="miniSelect">按日</div></div>
+        <canvas id="analysisChart" class="analysisChart" width="800" height="360"></canvas>
+      </div>
+
+      <div class="splitGrid two" style="margin-bottom:14px">
+        <div class="analysisCard">
+          <div class="sectionHead"><div class="sectionTitle">异常分布</div><div class="sectionSub" id="distLabel">近30天</div></div>
+          <div class="donutWrap">
+            <div id="distDonut" class="donut" style="background:conic-gradient(#f6c247 0 0deg,#3b82f6 0deg 0deg,#22c1d6 0deg 0deg)"><div class="donutCenter"><span>异常总计</span><b id="distTotal">0</b><span>次</span></div></div>
+            <div class="legendCol">
+              <div class="legendItem"><div class="legendLabel"><span class="dot" style="background:#f6c247"></span>偏高</div><div id="distHigh">0次　0%</div></div>
+              <div class="legendItem"><div class="legendLabel"><span class="dot" style="background:#3b82f6"></span>稳定</div><div id="distStable">0次　0%</div></div>
+              <div class="legendItem"><div class="legendLabel"><span class="dot" style="background:#22c1d6"></span>偏低</div><div id="distLow">0次　0%</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="analysisCard">
+          <div class="sectionHead"><div class="sectionTitle">血压统计</div><div class="sectionSub">单位：mmHg</div></div>
+          <div class="statRows">
+            <div class="statRow"><div>收缩压平均值</div><div id="statSysV" class="bpStable">--</div><div class="barTrack"><div id="statSysBar" class="barFill" style="background:#2563eb;width:0%"></div></div></div>
+            <div class="statRow"><div>舒张压平均值</div><div id="statDiaV" class="bpStable">--</div><div class="barTrack"><div id="statDiaBar" class="barFill" style="background:#16a34a;width:0%"></div></div></div>
+            <div class="statRow"><div>心率平均值</div><div id="statHrV" class="bpStable">--</div><div class="barTrack"><div id="statHrBar" class="barFill" style="background:#8b5cf6;width:0%"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analysisCard" style="margin-bottom:14px">
+        <div class="duoCard">
+          <div class="timeBox">
+            <div class="timeTitle">🌤️ 早晨平均（6:00–10:00）</div>
+            <div class="timeValue" id="morningMain">--/-- mmHg　-- 次/分</div>
+            <div class="timeMeta">
+              <div><b id="morningCount">0</b><span>测量次数</span></div>
+              <div><b id="morningAbn">0</b><span>异常次数</span></div>
+              <div><b id="morningRate">--</b><span>达标率</span></div>
+            </div>
+          </div>
+          <div class="timeBox">
+            <div class="timeTitle">🌙 晚上平均（18:00–22:00）</div>
+            <div class="timeValue" id="nightMain">--/-- mmHg　-- 次/分</div>
+            <div class="timeMeta">
+              <div><b id="nightCount">0</b><span>测量次数</span></div>
+              <div><b id="nightAbn">0</b><span>异常次数</span></div>
+              <div><b id="nightRate">--</b><span>达标率</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analysisCard" style="margin-bottom:14px">
+        <div class="sectionHead"><div class="sectionTitle">行为关联洞察</div><div class="sectionSub">基于记录字段自动生成</div></div>
+        <div class="insightWrap">
+          <div class="insightList">
+            <div class="insightTile"><div class="insightIco">👤</div><div><div class="insightK">测量前状态</div><div id="stateInsight" class="tinyLabel">--</div></div><div id="stateRatio" class="insightV">--</div></div>
+            <div class="insightTile"><div class="insightIco">💊</div><div><div class="insightK">是否服药</div><div id="medInsight" class="tinyLabel">--</div></div><div id="medRatio" class="insightV">--</div></div>
+            <div class="insightTile"><div class="insightIco">⏱️</div><div><div class="insightK">测量时段</div><div id="periodInsight" class="tinyLabel">--</div></div><div id="periodRatio" class="insightV">--</div></div>
+          </div>
+          <ul id="analysisBullets" class="bulletList"></ul>
+        </div>
+      </div>
+
+      <div class="analysisCard">
+        <div class="sectionHead"><div class="sectionTitle">分析建议</div><div class="sectionSub">给自己看的分析摘要</div></div>
+        <div class="suggestionBox">
+          <div id="analysisSummaryBox" class="checkList"></div>
+          <div class="illusShield">🛡️</div>
+        </div>
+      </div>
+    </section>
+
+        <section id="export" class="page">
+      <div class="heroCard">
+        <div class="heroLeft">
+          <div class="heroIcon">⬇️</div>
+          <div>
+            <div class="heroTitle">导出与分享</div>
+            <div class="heroDesc">安全导出，便捷分享您的血压数据</div>
+          </div>
+        </div>
+        <button class="ghostPill secondary" onclick="toast('建议优先使用医生版 PDF 或 JSON 备份')">🕒 导出记录</button>
+      </div>
+      <div class="exportStack">
+        <div class="exportSection">
+          <div class="exportHead"><div class="secNo">1</div><div><div class="exportTitle">医生就诊包</div><div class="exportDesc">为就诊沟通准备的专业资料包，包含 A4 对比表、趋势图、就诊摘要。</div></div><span class="tagHot">推荐</span></div>
+          <div class="doctorWrap">
+            <div>
+              <div class="toolGrid" style="margin-top:0;grid-template-columns:repeat(3,1fr)">
+                <div class="actionCard"><span class="actionIcon">📄</span><div class="actionTitle">A4 对比表</div><div class="actionSub">血压对比数据</div></div>
+                <div class="actionCard"><span class="actionIcon">📈</span><div class="actionTitle">趋势图</div><div class="actionSub">7 / 30 / 全部</div></div>
+                <div class="actionCard"><span class="actionIcon">📋</span><div class="actionTitle">就诊摘要</div><div class="actionSub">关键指标汇总</div></div>
+              </div>
+              <div class="ctaRow">
+                <button class="btnLarge" onclick="printDoctorPDF()">📄 生成医生版 PDF</button>
+                <button class="btnLarge btnOutline" onclick="previewDoctorPackage()">👁️ 预览</button>
+              </div>
+            </div>
+            <div class="previewMini" id="doctorPreviewCard"></div>
+          </div>
+        </div>
+
+        <div class="exportSection">
+          <div class="exportHead"><div class="secNo">2</div><div><div class="exportTitle">数据备份与恢复</div><div class="exportDesc">安全备份数据，换机不丢失。导入备份功能已保留。</div></div></div>
+          <div class="toolGrid">
+            <button class="actionCard secondary" onclick="exportCSV()"><span class="actionIcon">🟢</span><div class="actionTitle">导出 CSV</div><div class="actionSub">表格文件</div></button>
+            <button class="actionCard secondary" onclick="exportJSON()"><span class="actionIcon">☁️</span><div class="actionTitle">导出备份</div><div class="actionSub">JSON 备份</div></button>
+            <label class="actionCard importLabel" style="display:block;padding:18px 12px"><span class="actionIcon">📥</span><div class="actionTitle">导入备份</div><div class="actionSub">恢复数据</div><input id="importFile" type="file" accept=".json,application/json" onchange="importJSONBackup(event)"></label>
+            <button class="actionCard secondary" onclick="copyReport()"><span class="actionIcon">📝</span><div class="actionTitle">复制就诊摘要</div><div class="actionSub">便于发送医生</div></button>
+          </div>
+          <div class="btnbar" style="margin-top:14px"><button class="danger" onclick="clearAll()">清空全部记录</button></div>
+        </div>
+
+        <div class="exportSection">
+          <div class="exportHead"><div class="secNo">3</div><div><div class="exportTitle">图像与分享</div><div class="exportDesc">将趋势图或医生版资料分享给家人、朋友或医生。</div></div></div>
+          <div class="toolGrid" style="grid-template-columns:repeat(3,1fr)">
+            <button class="actionCard secondary" onclick="exportChartPNG()"><span class="actionIcon">🖼️</span><div class="actionTitle">导出趋势图</div><div class="actionSub">PNG 高质量图</div></button>
+            <button class="actionCard secondary" onclick="shareDoctorSummary()"><span class="actionIcon">🔗</span><div class="actionTitle">分享摘要</div><div class="actionSub">发送到应用</div></button>
+            <button class="actionCard secondary" onclick="printDoctorPDF()"><span class="actionIcon">🖨️</span><div class="actionTitle">打印 / 分享</div><div class="actionSub">PDF 打印或分享</div></button>
+          </div>
+        </div>
+
+        <div class="noteCard">
+          <div class="noteTitle">ℹ️ 备份与换机说明</div>
+          <ul class="noteList">
+            <li>备份文件将保存到「文件 App / 下载项」，请妥善保管。</li>
+            <li>更换设备时，请使用「导入备份（JSON）」恢复全部数据。</li>
+            <li>重新添加桌面图标通常不影响数据；若清理浏览器网站数据，建议先导出备份。</li>
+          </ul>
+        </div>
+
+        <div style="display:none">
+          <div id="doctorReport" class="report"></div>
+          <div id="printReport" class="printOnly"></div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <nav class="tabs noPrint"><button class="tab active" onclick="showPage('home',this)">首页</button><button class="tab" onclick="showPage('records',this)">记录</button><button class="tab" onclick="showPage('analysis',this)">分析</button><button class="tab" onclick="showPage('export',this)">导出</button></nav>
   <div id="toast" class="toast">已保存</div>
+  <input id="scanFile" type="file" accept="image/*" capture="environment" style="display:none" onchange="scanBloodPressureImage(event)">
 
 <script>
-const KEY='bp_records_v2';let records=[];let deferredPrompt=null;
+const KEY='bp_records_v2';let records=[];let deferredPrompt=null;let analysisRange=7;
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600)}
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').style.display='block'});
 document.getElementById('installBtn').addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').style.display='none'}else{toast('iPhone请点Safari分享按钮，再选添加到主屏幕')}});
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
+
+function extractBpNumbers(text){
+  const clean = String(text || '')
+    .replace(/[Oo]/g,'0')
+    .replace(/[Il|]/g,'1')
+    .replace(/[Ss]/g,'5')
+    .replace(/[B]/g,'8');
+  const nums = (clean.match(/\d{2,3}/g) || [])
+    .map(n=>Number(n))
+    .filter(n=>n>=40 && n<=260);
+  let sys='', dia='', hr='';
+  for(let i=0;i<nums.length;i++){
+    const a=nums[i], b=nums[i+1], c=nums[i+2];
+    if(a>=80 && a<=220 && b>=40 && b<=140 && a>b){
+      sys=a; dia=b;
+      if(c>=40 && c<=160) hr=c;
+      break;
+    }
+  }
+  if(!sys && nums.length>=2){
+    const sorted = nums.slice(0,5);
+    for(let i=0;i<sorted.length-1;i++){
+      if(sorted[i] > sorted[i+1]){
+        sys=sorted[i]; dia=sorted[i+1];
+        const h=sorted[i+2];
+        if(h>=40 && h<=160) hr=h;
+        break;
+      }
+    }
+  }
+  return {sys,dia,hr,nums,raw:clean};
+}
+async function scanBloodPressureImage(event){
+  const input = event.target;
+  const file = input.files && input.files[0];
+  if(!file) return;
+  const resultBox = document.getElementById('scanResult');
+  resultBox.style.display = 'block';
+  resultBox.textContent = '正在识别图片，请稍等……';
+  try{
+    if(!window.Tesseract){
+      resultBox.textContent = '识别组件加载失败。请检查网络后重试。';
+      return;
+    }
+    const workerResult = await Tesseract.recognize(file, 'eng', {
+      logger: m => {
+        if(m.status === 'recognizing text'){
+          resultBox.textContent = `正在识别图片：${Math.round((m.progress||0)*100)}%`;
+        }
+      }
+    });
+    const text = workerResult && workerResult.data ? workerResult.data.text : '';
+    const found = extractBpNumbers(text);
+    if(found.sys && found.dia){
+      document.getElementById('sys').value = found.sys;
+      document.getElementById('dia').value = found.dia;
+      if(found.hr) document.getElementById('hr').value = found.hr;
+      fillNow();
+      resultBox.textContent = `识别完成：\n高压：${found.sys}\n低压：${found.dia}\n心率：${found.hr || '未识别'}\n\n请核对数字，确认无误后点“保存记录”。`;
+      toast('扫描已填入');
+    }else{
+      resultBox.textContent = `没有稳定识别到血压数字。\n\n识别到的数字：${found.nums.join('、') || '无'}\n\n建议重新拍照：屏幕放大、减少反光、保持清晰。`;
+    }
+  }catch(e){
+    resultBox.textContent = '识别失败。可以重新拍照，或先手动输入。';
+  }finally{
+    input.value = '';
+  }
+}
+
 function pad(n){return String(n).padStart(2,'0')}function nowLocal(){const d=new Date();return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`}function fillNow(){document.getElementById('dt').value=nowLocal()}function quickMedication(){document.getElementById('meds').value='倍博特；瑞舒伐他汀 10mg';document.getElementById('tookMed').value='是'}
 function load(){try{records=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){records=[]}records.sort((a,b)=>new Date(b.dt)-new Date(a.dt))}function save(){localStorage.setItem(KEY,JSON.stringify(records))}
 function classify(sys,dia){sys=Number(sys);dia=Number(dia);if(sys>=160||dia>=100)return{text:'明显偏高',cls:'bad'};if(sys>=140||dia>=90)return{text:'偏高',cls:'warn'};if(sys<90||dia<60)return{text:'偏低',cls:'warn'};return{text:'较稳定',cls:'good'}}
 function fmtDate(dt){const d=new Date(dt);if(isNaN(d))return dt;return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`}
 function avg(arr,key){const nums=arr.map(x=>Number(x[key])).filter(x=>!isNaN(x)&&x>0);if(!nums.length)return'--';return Math.round(nums.reduce((a,b)=>a+b,0)/nums.length)}
 function recentDays(n){const cut=new Date();cut.setDate(cut.getDate()-n);return records.filter(r=>new Date(r.dt)>=cut)}function todayRecords(){const t=new Date();const s=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;return records.filter(r=>String(r.dt).startsWith(s))}
-function renderStats(){const last=records[0];document.getElementById('todayCount').textContent=`${todayRecords().length} 次`;if(last){const c=classify(last.sys,last.dia);document.getElementById('lastBp').textContent=`${last.sys}/${last.dia}`;document.getElementById('lastHr').textContent=last.hr||'--';document.getElementById('lastStatus').textContent=c.text}else{['lastBp','lastHr','lastStatus'].forEach(id=>document.getElementById(id).textContent='--')}const r7=recentDays(7),r30=recentDays(30);document.getElementById('avg7Sys').textContent=avg(r7,'sys');document.getElementById('avg7Dia').textContent=avg(r7,'dia');document.getElementById('avg7Hr').textContent=avg(r7,'hr');document.getElementById('avg30Sys').textContent=avg(r30,'sys');document.getElementById('avg30Dia').textContent=avg(r30,'dia');document.getElementById('avg30Hr').textContent=avg(r30,'hr')}
-function recordHtml(r){const c=classify(r.sys,r.dia);return `<div class="record"><div class="recordTop"><div><div class="bp">${r.sys}/${r.dia} <span style="font-size:13px;color:#6b7280">mmHg</span></div><div class="meta">${fmtDate(r.dt)}｜${r.period}｜${r.arm}｜${r.position}｜心率 ${r.hr||'--'}</div></div><span class="badge ${c.cls}">${c.text}</span></div><div class="symptoms"><b>服药：</b>${r.tookMed||'--'}；${r.meds||'未记录'}<br><b>状态：</b>${r.state||'--'}　<b>症状：</b>${r.symptoms||'未记录'}<br><b>备注：</b>${r.note||'无'}</div><div class="btnbar noPrint"><button class="secondary" onclick="editRecord('${r.id}')">编辑</button><button class="danger" onclick="deleteRecord('${r.id}')">删除</button></div></div>`}
-function renderRecords(){const box=document.getElementById('recordList');const q=(document.getElementById('filterText')?.value||'').trim().toLowerCase();let list=records;if(q)list=records.filter(r=>JSON.stringify(r).toLowerCase().includes(q));document.getElementById('totalCount').textContent=`${list.length} 条`;box.innerHTML=list.length?list.map(recordHtml).join(''):'<div class="empty">暂无记录</div>'}
+function renderStats(){const last=records[0];const todayN=todayRecords().length;document.getElementById('todayCount').textContent=`${todayN} 次`;const top=document.getElementById('todayCountTop');if(top)top.textContent=`${todayN} 次`;if(last){const c=classify(last.sys,last.dia);document.getElementById('lastBp').textContent=`${last.sys}/${last.dia}`;document.getElementById('lastHr').textContent=last.hr||'--';document.getElementById('lastStatus').textContent=c.text}else{['lastBp','lastHr','lastStatus'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='--'})}const r7=recentDays(7),r30=recentDays(30);document.getElementById('avg7Sys').textContent=avg(r7,'sys');document.getElementById('avg7Dia').textContent=avg(r7,'dia');document.getElementById('avg7Hr').textContent=avg(r7,'hr');document.getElementById('avg30Sys').textContent=avg(r30,'sys');document.getElementById('avg30Dia').textContent=avg(r30,'dia');document.getElementById('avg30Hr').textContent=avg(r30,'hr');const homeAbn=document.getElementById('homeAbnormal');if(homeAbn)homeAbn.textContent=r30.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length || 0}
+function recordHtml(r){const c=classify(r.sys,r.dia);return `<div class="recordCardNew"><div class="recordMainTop"><div><div class="recordNums"><strong>${r.sys}/${r.dia}</strong><span class="recordUnit">mmHg</span></div><div class="recordTime">${fmtDate(r.dt)}｜${r.period}｜${r.arm}｜${r.position}｜心率 ${r.hr||'--'}</div></div><span class="badge ${c.cls}">${c.text}</span></div><div class="tagRow"><span class="tagChip">服药：${r.tookMed||'未记录'}</span><span class="tagChip">测前状态：${r.state||'未记录'}</span>${r.meds?`<span class="tagChip">药物：${r.meds}</span>`:''}</div><div class="detailGrid"><div class="detailItem"><div class="k">症状</div><div class="v">${r.symptoms||'未记录'}</div></div><div class="detailItem"><div class="k">备注</div><div class="v">${r.note||'无'}</div></div></div><div class="recordActionRow"><button class="secondary" onclick="editRecord('${r.id}')">编辑</button><button class="danger" onclick="deleteRecord('${r.id}')">删除</button></div></div>`}
+function renderRecords(){const q=(document.getElementById('filterText')?.value||'').trim().toLowerCase();let list=records.filter(r=>JSON.stringify(r).toLowerCase().includes(q));document.getElementById('totalCount').textContent=`${list.length} 条`;const abnormalTotal=list.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;const symptomTotal=list.filter(r=>r.symptoms && !['无','无不适','未记录'].includes(String(r.symptoms).trim())).length;const a1=document.getElementById('sumRecordTotal');if(a1)a1.textContent=list.length;const a2=document.getElementById('sumRecordAbn');if(a2)a2.textContent=abnormalTotal;const a3=document.getElementById('sumRecordSym');if(a3)a3.textContent=symptomTotal;const box=document.getElementById('recordList');box.innerHTML=list.length?list.map(recordHtml).join(''):`<div class="empty">${q?'没有匹配结果，请换个关键词试试。':'暂无历史记录，先到首页新增一条记录吧。'}</div>`}
 function clearFilter(){document.getElementById('filterText').value='';renderAll()}
-function renderChart(){const canvas=document.getElementById('chart');const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);const data=[...records].sort((a,b)=>new Date(a.dt)-new Date(b.dt)).slice(-30);ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='#e5e7eb';ctx.lineWidth=1;for(let i=0;i<5;i++){const y=40+i*60;ctx.beginPath();ctx.moveTo(50,y);ctx.lineTo(770,y);ctx.stroke()}ctx.fillStyle='#6b7280';ctx.font='22px sans-serif';if(data.length<2){ctx.fillText('至少保存 2 条记录后显示趋势图',220,180);return}const values=data.flatMap(r=>[Number(r.sys),Number(r.dia),Number(r.hr)||0]).filter(Boolean);const min=Math.max(40,Math.min(...values)-10),max=Math.max(...values)+10;function x(i){return 60+i*(700/(data.length-1))}function y(v){return 320-(v-min)*(260/(max-min))}function line(key,width){ctx.lineWidth=width;ctx.beginPath();let started=false;data.forEach((r,i)=>{const v=Number(r[key]);if(!v)return;if(!started){ctx.moveTo(x(i),y(v));started=true}else ctx.lineTo(x(i),y(v))});ctx.stroke()}ctx.strokeStyle='#2563eb';line('sys',4);ctx.strokeStyle='#16a34a';line('dia',4);ctx.strokeStyle='#f59e0b';line('hr',3);ctx.fillStyle='#111827';ctx.font='18px sans-serif';ctx.fillText('蓝=收缩压  绿=舒张压  橙=心率',50,28);ctx.fillStyle='#6b7280';ctx.font='15px sans-serif';ctx.fillText(String(Math.round(max)),10,48);ctx.fillText(String(Math.round(min)),14,322)}
+function getChartSource(limit=30){return records.slice(0,limit).sort((a,b)=>new Date(a.dt)-new Date(b.dt))}
+function drawTrendChart(canvasId,data){const c=document.getElementById(canvasId);if(!c)return;const ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='#ffffff';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='#e5e7eb';for(let i=0;i<5;i++){const y=48+i*68;ctx.beginPath();ctx.moveTo(56,y);ctx.lineTo(c.width-24,y);ctx.stroke()}ctx.fillStyle='#6b7280';ctx.font='16px sans-serif';if(data.length<2){ctx.fillText('至少保存 2 条记录后显示趋势图',c.width/2-120,c.height/2);return}const syss=data.map(r=>Number(r.sys)).filter(Boolean),dias=data.map(r=>Number(r.dia)).filter(Boolean),hrs=data.map(r=>Number(r.hr)).filter(Boolean);const all=[...syss,...dias,...hrs];const min=Math.max(40,Math.min(...all)-10),max=Math.max(...all)+10;const left=70,right=c.width-40,top=46,bottom=c.height-46;function x(i){return left+i*((right-left)/(data.length-1||1))}function y(v){return bottom-(v-min)*((bottom-top)/(max-min||1))}const drawLine=(key,color,width)=>{ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();let started=false;data.forEach((r,i)=>{const v=Number(r[key]);if(!v)return; if(!started){ctx.moveTo(x(i),y(v));started=true}else{ctx.lineTo(x(i),y(v))}});ctx.stroke();data.forEach((r,i)=>{const v=Number(r[key]);if(!v)return;ctx.fillStyle=color;ctx.beginPath();ctx.arc(x(i),y(v),4.5,0,Math.PI*2);ctx.fill()})};drawLine('sys','#2563eb',3.5);drawLine('dia','#16a34a',3.5);drawLine('hr','#8b5cf6',2.6);ctx.fillStyle='#6b7280';ctx.font='14px sans-serif';data.forEach((r,i)=>{ctx.fillText(String(fmtDate(r.dt)).slice(5,10),x(i)-18,bottom+24)});ctx.fillText(String(Math.round(max)),18,top+4);ctx.fillText(String(Math.round(min)),18,bottom+4);ctx.fillStyle='#334155';ctx.font='15px sans-serif';ctx.fillText('蓝=收缩压',80,24);ctx.fillText('绿=舒张压',210,24);ctx.fillText('紫=心率',340,24)}
+function renderChart(){const source=getChartSource(30);drawTrendChart('chart',source);const analysisSource=getAnalysisSource();drawTrendChart('analysisChart',analysisSource)}
+function setAnalysisRange(days,btn){analysisRange=days;document.querySelectorAll('.rangeBtn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderAnalysis()}
+function getAnalysisSource(){if(!records.length)return[];if(analysisRange===0)return [...records].sort((a,b)=>new Date(a.dt)-new Date(b.dt));return recentDays(analysisRange).sort((a,b)=>new Date(a.dt)-new Date(b.dt))}
+function pct(part,total){return total?((part*100/total).toFixed(1)+'%'):'0%'}
+function compareAvgText(currentDays){const current=recentDays(currentDays);if(!current.length)return '--';const cut=new Date();cut.setDate(cut.getDate()-currentDays*2);const nowStart=new Date();nowStart.setDate(nowStart.getDate()-currentDays);const prev=records.filter(r=>{const d=new Date(r.dt);return d<nowStart && d>=cut});if(!prev.length)return '--';const ds=avg(current,'sys')-avg(prev,'sys');const dd=avg(current,'dia')-avg(prev,'dia');const arrow = (ds<=0 && dd<=0)?'↓':'↑';return `${arrow} ${Math.abs(ds)}/${Math.abs(dd)}`}
+function buildAnalysisSummary(source){if(!source.length)return ['暂无数据，先在首页保存血压记录。'];const abn=source.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60);const morning=source.filter(r=>r.period==='早晨');const night=source.filter(r=>r.period==='晚上'||r.period==='睡前');const suggestions=[];if(abn.length===0)suggestions.push('近阶段血压整体较稳定，建议继续保持固定时间测量与良好生活习惯。');if(avg(source,'sys')!=='--' && Number(avg(source,'sys'))>=135) suggestions.push('平均收缩压偏高，建议减少盐分摄入，并带记录给医生评估。');if(morning.length && night.length && Number(avg(morning,'sys'))>Number(avg(night,'sys'))+3) suggestions.push('早晨血压整体高于晚上，建议持续关注晨间血压变化。');if(source.some(r=>r.tookMed==='否')) suggestions.push('存在未服药记录，建议按医嘱规律服药，避免漏服。');if(source.some(r=>r.state==='运动后'||r.state==='情绪波动')) suggestions.push('运动后或情绪波动时建议先安静休息 5 分钟后再测量。');if(suggestions.length<3) suggestions.push('建议继续补充药物名称、症状与备注信息，便于导出医生版资料。');return suggestions.slice(0,4)}
+function topValue(arr,key,match){const list=arr.filter(x=>x[key]);if(!list.length)return ['--','--'];const count={};list.forEach(x=>{const v=x[key];count[v]=(count[v]||0)+1});const sorted=Object.entries(count).sort((a,b)=>b[1]-a[1]);const top=sorted[0];return [top[0], pct(top[1],list.length)]}
+function buildBehaviorBullets(source){const bullets=[];const unMed=source.filter(r=>r.tookMed==='否');if(unMed.length){const abn=unMed.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length; bullets.push(`在未服药的记录中，异常率约为 ${pct(abn,unMed.length)}，建议规律服药。`)}const sports=source.filter(r=>r.state==='运动后'||r.state==='情绪波动');if(sports.length){const abn=sports.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length; bullets.push(`运动后或情绪波动记录的异常率约为 ${pct(abn,sports.length)}，测量前建议保持安静。`)}const morning=source.filter(r=>r.period==='早晨'), night=source.filter(r=>r.period==='晚上'||r.period==='睡前');if(morning.length && night.length){const ms=Number(avg(morning,'sys')), ns=Number(avg(night,'sys')); bullets.push(`早晨平均收缩压 ${ms} mmHg，晚上平均收缩压 ${ns} mmHg，${ms>ns?'早晨略高于晚上':'昼夜差异不明显'}。`)}if(!bullets.length)bullets.push('当前记录较少，建议保持至少早晚各一次连续记录，以便形成更有价值的洞察。');return bullets.slice(0,3)}
+function shareDoctorSummary(){const text=getReport();if(navigator.share){navigator.share({title:'安压记录-就诊摘要',text}).catch(()=>{});}else{copyReport()}}
+function previewDoctorPackage(){showPage('export', document.querySelectorAll('.tab')[3]);const node=document.getElementById('doctorPreviewCard');if(node){node.scrollIntoView({behavior:'smooth',block:'center'});node.style.outline='2px solid #60a5fa';setTimeout(()=>node.style.outline='none',1400)}}
 function getReport(){const total=records.length;if(!total)return'暂无血压记录。建议从今天开始，固定早晨起床后、晚上睡前各记录一次，复查时带给医生。';const r30=recentDays(30),source=r30.length?r30:records;const maxSys=[...source].sort((a,b)=>b.sys-a.sys)[0];const maxDia=[...source].sort((a,b)=>b.dia-a.dia)[0];const minSys=[...source].sort((a,b)=>a.sys-b.sys)[0];const abnormal=source.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60);const symptoms=source.filter(r=>r.symptoms&&!['无','无不适'].includes(r.symptoms.trim()));const avgSys=avg(source,'sys'),avgDia=avg(source,'dia'),avgHr=avg(source,'hr');const meds=[...new Set(source.map(r=>r.meds).filter(Boolean))].slice(0,5).join('；')||'未记录';return `近${r30.length?'30天':'全部'}共记录血压 ${source.length} 次。\n平均血压：${avgSys}/${avgDia} mmHg，平均心率：${avgHr} 次/分钟。\n最高收缩压：${maxSys.sys}/${maxSys.dia} mmHg（${fmtDate(maxSys.dt)}）。\n最高舒张压：${maxDia.sys}/${maxDia.dia} mmHg（${fmtDate(maxDia.dt)}）。\n最低收缩压：${minSys.sys}/${minSys.dia} mmHg（${fmtDate(minSys.dt)}）。\n异常/需关注记录：${abnormal.length} 次。\n伴随症状记录：${symptoms.length} 次，常见症状可查看历史记录。\n近期记录药物：${meds}。\n\n复查时可重点向医生说明：\n1. 近期平均血压是否达标；\n2. 早晚血压是否差异明显；\n3. 服药后是否仍有头鸣、头晕等症状；\n4. 是否存在明显偏高或偏低的时段；\n5. 当前用药名称、剂量、服药时间和是否漏服。`}
-function renderAnalysis(){const morning=records.filter(r=>r.period==='早晨'),night=records.filter(r=>r.period==='晚上'||r.period==='睡前');document.getElementById('morningAvg').textContent=morning.length?`${avg(morning,'sys')}/${avg(morning,'dia')}`:'--/--';document.getElementById('nightAvg').textContent=night.length?`${avg(night,'sys')}/${avg(night,'dia')}`:'--/--';document.getElementById('abnormalCount').textContent=records.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length;const report=getReport();document.getElementById('analysisBox').textContent=report;document.getElementById('doctorReport').textContent=report;renderPrintReport()}
+function renderDoctorPreview(){const box=document.getElementById('doctorPreviewCard');if(!box)return;const source=recentDays(30).length?recentDays(30):records;const last=records[0];box.innerHTML=`<div class="previewHeader"><span class="previewBadge">🛡️ 血压就诊资料（医生版）</span><span>${source.length} 条记录</span></div><div class="previewBig"><div><b>${last?`${last.sys}/${last.dia}`:'--/--'}</b><span> mmHg</span><div class="tinyLabel">近${recentDays(30).length?30:'全部'}天平均值</div></div><div class="tinyLabel" style="text-align:right">最近测量<br>${last?fmtDate(last.dt):'--'}</div></div><div class="previewCols"><div>平均收缩压<br><b style="font-size:16px;color:#172554">${avg(source,'sys')}</b></div><div>平均舒张压<br><b style="font-size:16px;color:#172554">${avg(source,'dia')}</b></div><div>异常记录<br><b style="font-size:16px;color:#172554">${source.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60).length}</b></div><div>平均心率<br><b style="font-size:16px;color:#172554">${avg(source,'hr')}</b></div></div><div class="previewLine"><svg viewBox="0 0 260 80" preserveAspectRatio="none"><polyline fill="none" stroke="#3b82f6" stroke-width="3" points="10,42 40,50 70,30 100,54 130,38 160,48 190,34 220,40 250,28"></polyline><polyline fill="none" stroke="#22c55e" stroke-width="3" points="10,55 40,58 70,48 100,60 130,52 160,58 190,50 220,54 250,48"></polyline></svg></div><div class="previewSmallText">含 A4 血压对比表、趋势图、就诊摘要，适合门诊复查时直接展示或打印。</div>`}
+function renderAnalysis(){const source=getAnalysisSource();const avg7Set=recentDays(7), avg30Set=recentDays(30).length?recentDays(30):records;document.getElementById('cardAvg7').innerHTML=`${avg(avg7Set,'sys')}/${avg(avg7Set,'dia')} <span class="metricUnit">mmHg</span>`;document.getElementById('cardAvg30').innerHTML=`${avg(avg30Set,'sys')}/${avg(avg30Set,'dia')} <span class="metricUnit">mmHg</span>`;document.getElementById('trend7').textContent=compareAvgText(7);document.getElementById('trend30').textContent=compareAvgText(30);const abn=source.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60);document.getElementById('cardAbnormal').innerHTML=`${abn.length} <span class="metricUnit">次</span>`;document.getElementById('abnormalRate').textContent=pct(abn.length,source.length);const last=records[0];document.getElementById('cardLatest').innerHTML=last?`${last.sys}/${last.dia} <span class="metricUnit">mmHg</span>`:`--/-- <span class="metricUnit">mmHg</span>`;document.getElementById('cardLatestSub').textContent=last?`${String(fmtDate(last.dt)).slice(5)} · ${classify(last.sys,last.dia).text}`:'--';
+const high=source.filter(r=>r.sys>=140||r.dia>=90).length;const low=source.filter(r=>r.sys<90||r.dia<60).length;const stable=source.length-high-low;document.getElementById('distLabel').textContent=analysisRange===0?'全部':'近'+analysisRange+'天';document.getElementById('distTotal').textContent=source.length;document.getElementById('distHigh').textContent=`${high}次　${pct(high,source.length)}`;document.getElementById('distStable').textContent=`${stable}次　${pct(stable,source.length)}`;document.getElementById('distLow').textContent=`${low}次　${pct(low,source.length)}`;const degHigh=source.length?high/source.length*360:0, degStable=source.length?stable/source.length*360:0, degLow=source.length?low/source.length*360:0;document.getElementById('distDonut').style.background=`conic-gradient(#f6c247 0 ${degHigh}deg,#3b82f6 ${degHigh}deg ${degHigh+degStable}deg,#22c1d6 ${degHigh+degStable}deg ${degHigh+degStable+degLow}deg)`;
+const as=Number(avg(source,'sys'))||0, ad=Number(avg(source,'dia'))||0, ah=Number(avg(source,'hr'))||0;document.getElementById('statSysV').textContent=as||'--';document.getElementById('statDiaV').textContent=ad||'--';document.getElementById('statHrV').textContent=ah||'--';document.getElementById('statSysBar').style.width=Math.min(100,Math.max(8,(as/160*100)))+'%';document.getElementById('statDiaBar').style.width=Math.min(100,Math.max(8,(ad/100*100)))+'%';document.getElementById('statHrBar').style.width=Math.min(100,Math.max(8,(ah/120*100)))+'%';
+const morning=records.filter(r=>r.period==='早晨');const night=records.filter(r=>r.period==='晚上'||r.period==='睡前');const morningAbn=morning.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60);const nightAbn=night.filter(r=>r.sys>=140||r.dia>=90||r.sys<90||r.dia<60);document.getElementById('morningMain').textContent=morning.length?`${avg(morning,'sys')}/${avg(morning,'dia')} mmHg　${avg(morning,'hr')} 次/分`:'--/-- mmHg　-- 次/分';document.getElementById('nightMain').textContent=night.length?`${avg(night,'sys')}/${avg(night,'dia')} mmHg　${avg(night,'hr')} 次/分`:'--/-- mmHg　-- 次/分';document.getElementById('morningCount').textContent=morning.length;document.getElementById('nightCount').textContent=night.length;document.getElementById('morningAbn').textContent=morningAbn.length;document.getElementById('nightAbn').textContent=nightAbn.length;document.getElementById('morningRate').textContent=morning.length?pct(morning.length-morningAbn.length,morning.length):'--';document.getElementById('nightRate').textContent=night.length?pct(night.length-nightAbn.length,night.length):'--';
+const [stateTop,statePct]=topValue(source,'state');const [medTop,medPct]=topValue(source,'tookMed');const [periodTop,periodPct]=topValue(source,'period');document.getElementById('stateInsight').textContent=stateTop==='--'?'--':`${stateTop} 为主`;document.getElementById('stateRatio').textContent=statePct;document.getElementById('medInsight').textContent=medTop==='--'?'--':`${medTop} 为主`;document.getElementById('medRatio').textContent=medPct;document.getElementById('periodInsight').textContent=periodTop==='--'?'--':`${periodTop} 测量占比更高`;document.getElementById('periodRatio').textContent=periodPct;const bullets=buildBehaviorBullets(source);document.getElementById('analysisBullets').innerHTML=bullets.map(t=>`<li>${t}</li>`).join('');const summary=buildAnalysisSummary(source);document.getElementById('analysisSummaryBox').innerHTML=summary.map(t=>`<div class="checkItem"><span class="checkMark">✓</span><span>${t}</span></div>`).join('');const report=getReport();document.getElementById('doctorReport').textContent=report;renderPrintReport();renderDoctorPreview()}
 function renderAll(){load();renderStats();renderRecords();renderChart();renderAnalysis()}
 document.getElementById('bpForm').addEventListener('submit',e=>{e.preventDefault();const id=document.getElementById('bpForm').dataset.editing||String(Date.now());const r={id,dt:dt.value,sys:Number(sys.value),dia:Number(dia.value),hr:Number(hr.value)||'',period:period.value,arm:arm.value,position:position.value,tookMed:tookMed.value,state:state.value,meds:meds.value.trim(),symptoms:symptoms.value.trim(),note:note.value.trim()};records=records.filter(x=>x.id!==id);records.push(r);save();e.target.reset();delete e.target.dataset.editing;fillNow();renderAll();toast('已保存')}
 )
