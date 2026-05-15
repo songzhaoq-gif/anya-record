@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>安压记录 V29</title>
+  <title>安压记录 V30</title>
   <meta name="theme-color" content="#2563eb" />
   <meta name="apple-mobile-web-app-title" content="安压记录" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -884,6 +884,44 @@
       pointer-events:none!important;
     }
 
+
+    .scanRealButton{
+      position:relative;
+      overflow:hidden;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius:18px;
+      padding:13px 18px;
+      font-weight:900;
+      font-size:15px;
+      background:#fff;
+      color:#1d4ed8;
+      border:none;
+      box-shadow:0 10px 22px rgba(15,23,42,.08);
+      cursor:pointer;
+      user-select:none;
+      text-align:center;
+      line-height:1.2;
+      min-height:46px;
+    }
+    .scanRealButton.primaryScan{
+      background:#0f766e;
+      color:#fff;
+      box-shadow:0 10px 22px rgba(15,118,110,.18);
+    }
+    .scanRealButton input[type=file]{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity:0.001;
+      cursor:pointer;
+      font-size:100px;
+      z-index:5;
+    }
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff!important}
@@ -1173,6 +1211,44 @@
       pointer-events:none!important;
     }
 
+
+    .scanRealButton{
+      position:relative;
+      overflow:hidden;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius:18px;
+      padding:13px 18px;
+      font-weight:900;
+      font-size:15px;
+      background:#fff;
+      color:#1d4ed8;
+      border:none;
+      box-shadow:0 10px 22px rgba(15,23,42,.08);
+      cursor:pointer;
+      user-select:none;
+      text-align:center;
+      line-height:1.2;
+      min-height:46px;
+    }
+    .scanRealButton.primaryScan{
+      background:#0f766e;
+      color:#fff;
+      box-shadow:0 10px 22px rgba(15,118,110,.18);
+    }
+    .scanRealButton input[type=file]{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity:0.001;
+      cursor:pointer;
+      font-size:100px;
+      z-index:5;
+    }
+
     @media print{
       @page{size:A4 landscape;margin:8mm}
       body{background:#fff}
@@ -1237,7 +1313,7 @@
           <div class="miniPill" style="background:rgba(255,255,255,.18);color:#fff">今日 <span id="todayCountTop">0 次</span></div>
         </div>
         <div class="bannerActions">
-          <label class="scanLabelButton" for="scanFile">📷 扫描录入</label>
+          <label class="scanRealButton">📷 扫描录入<input type="file" accept="image/*" capture="environment" onchange="scanBloodPressureImage(event)"></label>
           <button type="button" class="secondary" onclick="showPage('export',document.querySelectorAll('.tab')[3])">📄 导出就诊包</button>
         </div>
       </div>
@@ -1268,7 +1344,7 @@
             <div class="wide inputGroup"><label>症状</label><input id="symptoms" placeholder="如：头鸣、头晕、胸闷、心慌、无不适"></div>
             <div class="wide inputGroup"><label>备注</label><textarea id="note" placeholder="如：昨晚睡眠、饮食、复查前说明等"></textarea></div>
           </div>
-          <div class="btnbar"><button type="submit">保存记录</button><label class="scanLabelButton scanBtn" for="scanFile">拍照扫描录入</label><button type="button" class="secondary" onclick="fillNow()">当前时间</button><button type="button" class="secondary" onclick="quickMedication()">常用药</button></div>
+          <div class="btnbar"><button type="submit">保存记录</button><label class="scanRealButton primaryScan">拍照扫描录入<input type="file" accept="image/*" capture="environment" onchange="scanBloodPressureImage(event)"></label><button type="button" class="secondary" onclick="fillNow()">当前时间</button><button type="button" class="secondary" onclick="quickMedication()">常用药</button></div>
           <div class="scanTip">拍照建议：让血压计屏幕尽量占满画面，避免反光，拍清楚高压、低压、心率。识别后请确认数字再保存。</div><div id="scanResult" class="scanResult"></div><div id="scanPreviewWrap" class="scanPreviewWrap"><canvas id="scanPreviewCanvas"></canvas><div class="scanModeTag">欧姆龙 LCD 专用识别模式</div></div></form>
         </div>
         <div class="chartCardHome"><div class="sectionHeader"><div><h2>近期趋势</h2><p>最近 30 条血压 / 心率变化</p></div><div class="miniPill">自动更新</div></div><canvas id="chart" width="800" height="360"></canvas>
@@ -1471,7 +1547,6 @@
   </div>
 
   <div id="toast" class="toast">已保存</div>
-  <input id="scanFile" class="scanInputNative" type="file" accept="image/*" capture="environment" onchange="scanBloodPressureImage(event)">
 
 <script>
 const KEY='bp_records_v2';let records=[];let deferredPrompt=null;let analysisRange=7;
@@ -1688,11 +1763,11 @@ function showOmronScanResult(sys,dia,hr,score,debugNums){
     box.innerHTML=`<div class="scanWarnBox">识别结果需要你确认，暂不自动填入。\n可信度：${score}/100\n\n请对照血压计屏幕，如果正确，再点“确认填入”。</div>${detail}
     <div class="scanChoiceRow">
       <button type="button" onclick="fillScannedValues(${sys},${dia},${hr ? hr : 0})">确认填入</button>
-      <label class="scanLabelButton" for="scanFile">重新拍照</label>
+      <label class="scanRealButton">重新拍照<input type="file" accept="image/*" capture="environment" onchange="scanBloodPressureImage(event)"></label>
     </div>`;
   }else{
     box.innerHTML=`<div class="scanWarnBox">没有稳定识别到完整血压值。\n识别到的候选数字：${debugNums.join('、')||'无'}\n\n建议重新拍：让屏幕占满画面、正对屏幕、避开反光。</div>
-    <div class="scanChoiceRow"><label class="scanLabelButton" for="scanFile">重新拍照</label></div>`;
+    <div class="scanChoiceRow"><label class="scanRealButton">重新拍照<input type="file" accept="image/*" capture="environment" onchange="scanBloodPressureImage(event)"></label></div>`;
   }
 }
 async function scanBloodPressureImage(event){
@@ -1700,6 +1775,7 @@ async function scanBloodPressureImage(event){
   const file=input.files&&input.files[0];
   if(!file)return;
   const resultBox=document.getElementById('scanResult');
+  if(!resultBox){alert('扫描区域未加载，请刷新页面后重试');return;}
   resultBox.style.display='block';
   resultBox.textContent='正在使用欧姆龙 LCD 专用模式识别……';
   try{
@@ -2127,7 +2203,7 @@ function importJSONBackup(event){
   reader.readAsText(file, 'utf-8');
 }
 
-function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V29',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
+function exportJSON(){const d=new Date();const name=`安压记录_备份_${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}.json`;downloadBlob(JSON.stringify({app:'安压记录',version:'V30',exportedAt:new Date().toISOString(),records},null,2),name,'application/json')}function downloadBlob(content,name,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href)}
 async function copyReport(){try{await navigator.clipboard.writeText(getReport());toast('就诊摘要已复制')}catch(e){alert('复制失败，可手动选中文本复制')}}function clearAll(){if(confirm('确定清空全部记录吗？此操作不可恢复。')){localStorage.removeItem(KEY);records=[];renderAll();toast('已清空')}}
 fillNow();renderAll();
 </script>
